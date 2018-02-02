@@ -6,7 +6,7 @@ from flask import request
 from flask import make_response
 
 app= Flask(__name__)
-@app.route("/webhook",methods=['POST'])
+@app.route("/webhook")
 def webhook():
     return """{
     "speech": "Welcome to nWave Chatbot",
