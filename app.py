@@ -11,8 +11,7 @@ app = Flask(__name__)
 def webhook():
 	if request.method=='POST':
 		response="nwave chatbot is under construction"
-		res= {	"speech": response,
-			"displayText": response,
+		res= {	"speech": response,"displayText": response,
         		"source": "nWave-estimation-chatbot"
 			}
 		res = json.dumps(res, indent=4)
