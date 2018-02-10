@@ -10,7 +10,12 @@ app = Flask(__name__)
 @app.route('/webhook',methods=['POST'])
 def webhook():
 	if request.method=='POST':
-		return "nWave Chatbot is under construction"
+		response="nwave chatbot is under construction"
+		return {
+			"speech": response,
+			"displayText": response,
+        		"source": "nWave-estimation-chatbot"
+			}
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
