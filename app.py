@@ -13,7 +13,7 @@ def webhook():
 	response="nwave chatbot is under construction."
 	res= {	"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
 	res = json.dumps(res, indent=4)
-	# print(res)r = make_response(res)
+	print(res)r = make_response(res)
 	r.headers['Content-Type'] = 'application/json'
 	return r
 
