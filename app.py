@@ -31,7 +31,7 @@ def webhook():
         r.headers['Content-Type'] = 'application/json'
         return r
     
-@app.route('/model',methods=['POST'])
+@app.route('/model')
 def mvRegression():
     #dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
     dataset=pd.read_excel("E:\Bizzy\POCs\ML\dataset.xlsx",skip_header=1)
