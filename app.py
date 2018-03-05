@@ -11,8 +11,8 @@ app = Flask(__name__)
 @app.route('/webhook',methods=['POST'])
 def webhook():
     req=request.get_json(silent=True,force=True)
-    mvRegression(req)
-    response="nwave chatbot is under construction"
+    
+    response=mvRegression(req)
     res= {"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
     res = json.dumps(res, indent=4)
     print(res)
@@ -23,8 +23,8 @@ def webhook():
 
 def mvRegression(req):
     #Machine Learning Model
-    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
-    #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset.xlsx",skip_header=1)
+    #dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
+    dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset.xlsx",skip_header=1)
     Y=dataset.iloc[:, 14:]
     X=dataset.iloc[:,1:14]
     header=list(X)
