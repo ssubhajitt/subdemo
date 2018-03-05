@@ -23,8 +23,8 @@ def webhook():
 
 def mvRegression(req):
     #Machine Learning Model
-    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
-    #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset.xlsx",skip_header=1)
+    #dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
+    dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset.xlsx",skip_header=1)
     Y=dataset.iloc[:, 13:]
     X=dataset.iloc[:,1:13]
     header=list(X)
@@ -36,7 +36,7 @@ def mvRegression(req):
     #Data Processing
     val=[]
     result=req.get("result")
-    parameters=result.get("parameters")
+    parameters=result.get("contexts").get("parameters")
     for i in header:
         str=parameters.get(i)
         print(str)
