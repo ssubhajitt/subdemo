@@ -36,7 +36,9 @@ def mvRegression(req):
     #Data Processing
     val=[]
     result=req.get("result")
-    parameters=result.get("contexts").get("parameters")
+    contexts=result.get("contexts")
+    print(contexts[0])
+    parameters=contexts[0].get("parameters")
     for i in header:
         str=parameters.get(i)
         print(str)
