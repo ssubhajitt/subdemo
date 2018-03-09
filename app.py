@@ -5,6 +5,7 @@ from flask import Flask , request, make_response
 from sklearn.preprocessing import Imputer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 
 app = Flask(__name__)
 
@@ -46,9 +47,10 @@ def mvRegression(req):
     ds=pd.DataFrame(val).T
     print(ds)
     op_lrt=lr.predict(ds)
-    weightage=op_lrt[0][0]
-    print(weightage)
-    return weightage
+    weightage=round(op_lrt[0][0],2)
+    op="Estimated Value for the interface is : %s Do you want to try for another Interface ? (Yes/No) " %(weightage)
+    print(op)
+    return op
 
 
 
