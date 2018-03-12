@@ -1,7 +1,7 @@
 import json
 import os
 import pandas as pd
-from flask import Flask , request, make_response , render_template
+from flask import Flask , request, make_response
 from sklearn.preprocessing import Imputer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -9,13 +9,10 @@ from sklearn.metrics import mean_squared_error
 
 app = Flask(__name__)
 
-@app.route('/idea')
-def home():
-    return render_template('index.html')
-
 @app.route('/webhook',methods=['POST'])
 def webhook():
     req=request.get_json(silent=True,force=True)
+    
     response=mvRegression(req)
     res= {"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
     res = json.dumps(res, indent=4)
@@ -27,8 +24,8 @@ def webhook():
 
 def mvRegression(req):
     #Machine Learning Model
-    #dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
-    dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset.xlsx",skip_header=1)
+    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
+    #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset.xlsx",skip_header=1)
     Y=dataset.iloc[:, 13:]
     X=dataset.iloc[:,1:13]
     header=list(X)
@@ -49,20 +46,12 @@ def mvRegression(req):
         val.append(str)
     ds=pd.DataFrame(val).T
     print(ds)
-
-    #Prediction
     op_lrt=lr.predict(ds)
     weightage=round(op_lrt[0][0],2)
-    processWeightage(weightage)
-    op="Estimated Value for the interface is : %s Do you want to try for another Interface ? (Yes/No) " %(weightage)
+    op="Estimated Value for the interface is : %s Person Days. Do you need estimation for another Interface ? (Yes/No) " %(weightage)
     print(op)
     return op
 
-def processWeightage(res):
-    op1= 0.25*res
-    op2= 0.40*res
-    op3= 0.35*res
-    return render_template("index.html")
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
