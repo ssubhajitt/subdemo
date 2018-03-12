@@ -1,4 +1,4 @@
 ---
 applications:
 - name: nwave-flask-demo
-memory: 128M
+memory: 256M
