@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+</head>
+<body bgcolor="black">
+<font face="Trebuchet MS" color=white align=center>
+  <h2>nWave IPM Digital Estimation Assistance (IDEA)</h2>
+  <button id="showOP" type="button">Click Here For Output</button>
+  <div id="op" class="op" style="display:none">
+   <iframe src="/op#op" ></iframe>
+  </div>
+<p id="extra">To Get Estimate ,<br>Just Answer few questions from our IDEA Bot!</p> 
+  <div class="frame" id="frame">
+   <div class="panel panel-primary" style="z-index: 1000">
+   <div id="chat-panel" class="panel-heading"><b>IDEA Bot</b>
+   </div>
+  </div>
+  <div class="innerframe" style="display:none">
+   <ul id="messages"></ul>
+    <div id="message-box">
+     <div class="msj-rta macro" style="margin:auto">                        
+      <div class="text text-l" style="background:white">
+       <input class="mytext" placeholder="Type a message"/>
+      </div> 
+     </div>
+    </div>
+   </div>
+  </div>
+</body>     
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='mainscript.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</html>

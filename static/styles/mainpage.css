@@ -1,0 +1,136 @@
+body{
+}
+.mytext{
+    border:0;padding:10px;background:#001010;
+}
+.text{
+    width:75%;display:flex;flex-direction:column;float:left;
+}
+.text > p:first-of-type{
+    width:100%;margin-top:0;margin-bottom:auto;line-height: 15px;font-size: 15px;float:left;
+}
+.text > p:last-of-type{
+    width:100%;text-align:left;color:black;margin-bottom:-7px;margin-top:auto;
+}
+.text-l{
+    float:left;padding-right:10px;
+}        
+.text-r{
+    float:right;padding-left:10px;
+}
+.macro{
+    margin-top:5px;width:85%;border-radius:5px;padding:5px;display:flex;
+}
+.msj-rta{
+    float:right;background:#001111;
+}
+.msj{
+    float:left;background:#101010;
+}
+
+.frame{
+    z-index:10000;
+    background:#000000;
+    overflow:hidden;
+    padding:0;
+    position:fixed;
+    right:40px;
+    bottom:40px;
+    font-size:15px;
+    width:375px;
+    border-width: 1px 1px 1px 1px;
+    border-color:white;
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-radius:5px;
+}
+.panel-heading{
+    cursor: pointer;
+    height:50px;
+    padding:17px;
+    background:#000000;
+}
+.innerframe{
+    height:400px;
+}
+.innerframe > div:last-of-type{
+    position:absolute;bottom:05px;width:100%;display:flex;
+}
+#messages {
+    width:100%;
+    list-style-type: none;
+    padding:18px;
+    position:absolute;
+    top:70px;
+    bottom:50px;
+    display:flex;
+    flex-direction: column;
+    overflow-y:scroll;
+    height: 350px;
+
+}
+.msj:before{
+    width: 0;
+    height: 0;
+    content:"";
+    top:-5px;
+    left:-14px;
+    position:relative;
+    border-style: solid;
+    border-width: 0 13px 13px 0;
+    border-color: transparent transparent transparent transparent;            
+}
+.msj-rta:after{
+    width: 0;
+    height: 0;
+    content:"";
+    top:-5px;
+    left:14px;
+    position:relative;
+    border-style: solid;
+    border-width: 13px 13px 0 0;
+    border-color: transparent transparent transparent transparent;           
+}  
+input:focus{
+    outline: none;
+}        
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #DCDCDC;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #DCDCDC;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #DCDCDC;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #DCDCDC;
+ }
+body{
+font-family: "Trebuchet MS";
+font-size:15px;
+background:url('http://cdn.wonderfulengineering.com/wp-content/uploads/2014/07/Hi-Tech-Wallpaper-12.jpg');
+background-repeat: no-repeat;
+}
+iframe{
+height:300px;
+width:400px;
+margin-left:-100px;
+margin-top:200px;
+}
+#showOP{
+border:none;
+float:left;
+position:relative;
+width:200px;
+height:100px;
+color: black;
+font-size: 15px;
+background:black;
+}
+#showOP:active , #showOP:hover {
+opacity: 0.5;
+}
+

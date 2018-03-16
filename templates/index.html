@@ -1,0 +1,74 @@
+<html>
+<body bgcolor="black">
+<font face="Trebuchet MS" color=white align=center>
+<h1>nWave IPM Digital Estimation Assistance (IDEA)<h1></font>
+<font face="Trebuchet MS" color=white align=right>
+<div id="chatbot"  style="display:none"><iframe src="chatbotPage.html#frame"></iframe></div>
+<button id="CBbutton" onclick="showChatbot()">IDEA Bot</button></font>
+<font face="Trebuchet MS" color=white align=left>
+<p>To Get Estimate ,<br>Just Answer few questions from our IDEA Bot</p>
+</font>
+<!------------------------------------------------JavaScript-------------------------------------------------------->
+<script>
+function showChatbot() {
+    var x = document.getElementById("chatbot");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+<!------------------------------------------------------------------------------------------------------------------>
+
+</body>
+<!-------------------------------------------------------CSS-------------------------------------------------------->
+<style>
+h1{
+margin-top:150px;
+}
+#CBbutton{
+margin-right:50px;
+margin-bottom:10px;
+float:right;
+width:150px;
+height:50px;
+background-color: rgba(0, 0, 0, 0);
+color: white;
+font-size: 20px;
+padding: 10px;
+box-shadow: 1px 1px 1px 2px inset;
+}
+#CBbutton:active , #CBbutton:hover{
+background-color: black;
+}
+#chatbot{
+float:right;
+marigin-bottom:10px;
+}
+p{
+margin-top:10px;
+margin-left:40px;
+float:left;
+font-size:18px;
+width:200px;
+}
+body{
+font-family: "Trebuchet MS";
+font-size:15px;
+background:url('http://cdn.wonderfulengineering.com/wp-content/uploads/2014/07/Hi-Tech-Wallpaper-12.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+}
+iframe{
+float:right;
+margin-bottom:10px;
+height:520px;
+width:325px;
+box-shadow: 1px 1px 1px 2px inset;
+}
+
+</style>
+<!------------------------------------------------------------------------------------------------------------------>
+
+</html>
