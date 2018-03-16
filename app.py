@@ -58,7 +58,7 @@ def mvRegression(req):
     op_lrt=lr.predict(ds)
     global weightage
     weightage=round(op_lrt[0][0],2)
-    op="Estimated Value for the interface is : %s Do you want to try for another Interface ? (Yes/No) " %(weightage)
+    op="Estimated Value for the interface is : %s Person Days. Do you want to try for another Interface ? (Yes/No) " %(weightage)
     print(op)
     return op
 
