@@ -9,7 +9,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
 
 app = Flask(__name__)
-app.secret_key = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+app.config['SECRET_KEY'] = 'QWERTYUIOPASDFGHJKLZXCVBNM'
 
 @app.route('/')
 def homepage():
