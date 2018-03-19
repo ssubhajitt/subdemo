@@ -29,7 +29,7 @@ def webhook():
         r.headers['Content-Type'] = 'application/json'
         return r
     if request.method == 'GET':
-        sop=session['op']
+        sop=session.get('op')
         return render_template('output.html',weightage=sop)
 
 def mvRegression(req):
