@@ -9,6 +9,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
 
 app = Flask(__name__)
+app.secret_key = 'QWERTYUIOPASDFGHJKLZXCVBNM'
 
 @app.route('/')
 def homepage():
@@ -64,5 +65,4 @@ def mvRegression(req):
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
-        app.secret_key = 'QWERTYUIOPASDFGHJKLZXCVBNM'
-	app.run(host='0.0.0.0', port=int(port), use_reloader=True, debug=True)
+       	app.run(host='0.0.0.0', port=int(port), use_reloader=True, debug=True)
