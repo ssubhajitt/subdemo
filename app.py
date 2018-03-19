@@ -11,8 +11,19 @@ from sklearn.decomposition import PCA
 app = Flask(__name__)
 
 @app.route('/op')
-def output():
-    return render_template('output.html',weightage=weightage)
+def flask():
+    if request.method == 'POST':
+        req=request.get_json(silent=True,force=True)
+        response=mvRegression(req)
+        res= {"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
+        res = json.dumps(res, indent=4)
+        print(res)
+        r = make_response(res)
+        r.headers['Content-Type'] = 'application/json'
+        return r
+    if request.method == 'GET':
+	return render_template('output.html',weightage=weightage)
+
 @app.route('/')
 def homepage():
     return render_template('chatbotPage.html')
