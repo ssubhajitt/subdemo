@@ -10,9 +10,6 @@ from sklearn.decomposition import PCA
 
 app = Flask(__name__)
 
-@app.route('/op')
-def output():
-    return render_template('output.html',weightage=weightage)
 @app.route('/')
 def homepage():
     return render_template('chatbotPage.html')
