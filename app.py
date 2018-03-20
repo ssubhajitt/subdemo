@@ -1,5 +1,7 @@
 import json
 import os
+import requests
+import pickle
 import pandas as pd
 from flask import Flask , request, make_response , render_template, session
 from sklearn.preprocessing import Imputer
@@ -9,40 +11,44 @@ from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+@app.route('/storedata',methods=['POST'])
+def storedata():
+    return request.data
 
 @app.route('/')
 def homepage():
     return render_template('chatbotPage.html')
 
-@app.route('/webhook',methods=['POST','GET'])
+@app.route('/webhook',methods=['POST'])
 def webhook():
-    if request.method == 'POST':
+    url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"
+    try:
         req=request.get_json(silent=True,force=True)
-        weightage=mvRegression(req)
-        session['op']=weightage
-        response="Estimated Value for the interface is : %s Do you want to try for another Interface ? (Yes/No) " %(weightage)
-        res= {"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
-        res = json.dumps(res, indent=4)
-        print(res)
-        r = make_response(res)
-        r.headers['Content-Type'] = 'application/json'
-        return r
-    if request.method == 'GET':
-        sop=session.get('op')
-        return render_template('output.html',weightage=sop)
+        sessionId=req.get("sessionId")
+        weightage=intRegression(req)
 
-def mvRegression(req):
+        response="Estimated Value for the interface is : %s Person Days. Do you need estimation for another interface ? (Yes/No) " %(weightage)
+    except:
+        response="Sorry Bot has faced an issue! Please try after sometime!"
+    send_data=requests.post(url,data=weightage)
+    res= {"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
+    res = json.dumps(res, indent=4)
+    print(res)
+    r = make_response(res)
+    r.headers['Content-Type'] = 'application/json'
+    return r
+   
+def intRegression(req):
     #Machine Learning Model
-    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
-    #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset.xlsx",skip_header=1)
+    #dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
+    dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
     Y=dataset.iloc[:, 13:]
     X=dataset.iloc[:,1:13]
     header=list(X)
     imputer = Imputer()
     dataset = imputer.fit_transform(X)
     lr=LinearRegression()
-    model_lr=lr.fit(X,Y)
+    model_int=lr.fit(X,Y)
 
     #Data Processing
     val=[]
