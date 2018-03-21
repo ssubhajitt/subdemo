@@ -27,7 +27,7 @@ def webhook():
         req=request.get_json(silent=True,force=True)
         sessionId=req.get("sessionId")
         weightage=intRegression(req)
-        send_data=requests.post(url,data=weightage)
+        #send_data=requests.post(url,data=weightage)
         response="Estimated Value for the interface is : %s Person Days. Do you need estimation for another interface ? (Yes/No) " %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
