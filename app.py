@@ -43,7 +43,7 @@ def webhook():
    
 def intRegression(req):
     #Machine Learning Model
-    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/integration.xlsx?raw=true",skip_header=1)
+    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset.xlsx?raw=true",skip_header=1)
     #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
     Y=dataset.iloc[:, 13:]
     X=dataset.iloc[:,1:13]
