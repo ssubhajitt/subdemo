@@ -74,9 +74,9 @@ def intRegression(req):
 
 @app.route('/getop')
 def getop():
-    op=session['Id']
-    print(op)
-    if op is not None:
+    Id=session['Id']
+    print(Id)
+    if Id is not None:
         return render_template('output.html',Id=Id)
     else:
         return render_template('nop.html')
