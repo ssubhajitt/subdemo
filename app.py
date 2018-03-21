@@ -33,12 +33,12 @@ def webhook():
         global weightage
         weightage=intRegression(req)
         print(sessionId)
-        
+        send_data=requests.post(url,data={'key':weightage})
         
         response="Estimated Value for the interface is : %s Person Days. Do you need estimation for another interface ? (Yes/No) " %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
-    send_data=requests.post(url,data={'key':weightage})
+    
     print(send_data)
     res= {"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
     res = json.dumps(res, indent=4)
