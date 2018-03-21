@@ -26,7 +26,8 @@ def webhook():
     try:
         req=request.get_json(silent=True,force=True)
         sessionId=req.get("sessionId")
-        global weightage=intRegression(req)
+        global weightage
+        weightage=intRegression(req)
         print(sessionId)
         print(weightage)
         
