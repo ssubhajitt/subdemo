@@ -11,13 +11,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
 
 app = Flask(__name__)
-@app.route('/storedata',methods=['POST'])
-def storedata():
-    print(request.get('key'))
-    writer_orig = pd.ExcelWriter('simple.xlsx', engine='xlsxwriter')
-    df.to_excel(writer_orig, index=False, sheet_name='report')
-    writer_orig.save()
-    return ""
+app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 
 @app.route('/')
 def homepage():
@@ -34,7 +28,7 @@ def webhook():
         weightage=intRegression(req)
         print(sessionId)
         send_data=requests.post(url,data={'key':weightage})
-        
+        session['opw']=weightage
         response="Estimated Value for the interface is : %s Person Days. Do you need estimation for another interface ? (Yes/No) " %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
@@ -77,6 +71,22 @@ def intRegression(req):
     op=round(op_lrt[0][0],2)
     print(op)
     return op
+
+@app.route('/getop')
+def getop():
+    op=session['opw']
+    if op is not None:
+        return op
+    else:
+        return 0
+    
+@app.route('/storedata',methods=['POST'])
+def storedata():
+    print(request.get('key'))
+    writer_orig = pd.ExcelWriter('simple.xlsx', engine='xlsxwriter')
+    df.to_excel(writer_orig, index=False, sheet_name='report')
+    writer_orig.save()
+    return ""
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
