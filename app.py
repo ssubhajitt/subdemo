@@ -76,9 +76,9 @@ def intRegression(req):
 def getop():
     op=session['opw']
     if op is not None:
-        return op
+        return '''<html><body><h1>({{op}})</h1></body></html>'''
     else:
-        return 0
+        return ""
     
 @app.route('/storedata',methods=['POST'])
 def storedata():
