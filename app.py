@@ -13,7 +13,11 @@ from sklearn.decomposition import PCA
 app = Flask(__name__)
 @app.route('/storedata',methods=['POST'])
 def storedata():
-    return request.data
+    print(request.get('key'))
+    writer_orig = pd.ExcelWriter('simple.xlsx', engine='xlsxwriter')
+    df.to_excel(writer_orig, index=False, sheet_name='report')
+    writer_orig.save()
+    return ""
 
 @app.route('/')
 def homepage():
