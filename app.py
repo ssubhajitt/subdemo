@@ -34,7 +34,7 @@ def webhook():
         response="Estimated Value for the interface is : %s Person Days. Do you need estimation for another interface ? (Yes/No) " %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
-    send_data=requests.post(url,data=weightage)
+    send_data=requests.post(url,data={'key':weightage})
     res= {"speech": response,"displayText": response,"source": "nWave-estimation-chatbot"}
     res = json.dumps(res, indent=4)
     print(res)
