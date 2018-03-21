@@ -28,7 +28,7 @@ def webhook():
         weightage=intRegression(req)
         print(sessionId)
         send_data=requests.post(url,data={'key':weightage})
-        session['opw']=weightage
+        session['Id']=sessionId
         response="Estimated Value for the interface is : %s Person Days. Do you need estimation for another interface ? (Yes/No) " %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
@@ -74,12 +74,12 @@ def intRegression(req):
 
 @app.route('/getop')
 def getop():
-    op=session['opw']
+    op=session['Id']
     print(op)
     if op is not None:
-        return '''<html><body><h1>({{op}})</h1></body></html>'''
+        return render_template('output.html',Id=Id)
     else:
-        return ""
+        return render_template('nop.html')
     
 @app.route('/storedata',methods=['POST'])
 def storedata():
