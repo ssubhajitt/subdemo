@@ -20,12 +20,16 @@ def homepage():
 @app.route('/webhook',methods=['POST'])
 def webhook():
     url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"
-    
+    output={}
     try:
         req=request.get_json(silent=True,force=True)
         sessionId=req.get("sessionId")
-        global weightage
         weightage=intRegression(req)
+        if sessionId in output:
+            output[sessionId].append(weightage)
+        else:
+            output[sessionId]=[weightage]
+        print(output)
         send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
