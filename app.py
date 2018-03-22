@@ -86,12 +86,12 @@ def storedata():
 
 @app.route('/getop')
 def getop():
-    Id=session['Id']
-    session.pop('Id', None)
-    print(Id)
-    if Id is not None:
+    try:
+        Id=session['Id']
+        session.pop('Id', None)
+        print(Id)
         return render_template('output.html',Id=Id)
-    else:
+    except:
         return render_template('nop.html')
     
 
