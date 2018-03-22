@@ -37,12 +37,9 @@ def webhook():
             output[sessionId]=[weightage]
         print(output)
         op={sessionId:weightage}
-        if client:
-            print(list(map(lambda doc: doc['name'], db)))
-            db.create_document(op)
-        else:
-            print(list(map(lambda doc: doc['name'], db)))
-            print("document not created")
+        session = client.session()
+        print('Username: {0}'.format(session['userCtx']['name']))
+        print('Databases: {0}'.format(client.all_dbs()))
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
