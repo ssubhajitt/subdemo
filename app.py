@@ -31,6 +31,7 @@ def webhook():
         else:
             output[sessionId]=[weightage]
         print(output)
+        output.to_pickle('output.txt')
         send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
@@ -87,6 +88,8 @@ def storedata():
 @app.route('/getop')
 def getop():
     try:
+        df=pd.read_pickle('output.json')
+        print(df)
         Id=session['Id']
         session.pop('Id', None)
         print(Id)
