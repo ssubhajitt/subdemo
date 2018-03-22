@@ -43,6 +43,7 @@ def webhook():
         print('Databases: {0}'.format(client.all_dbs()))
         db = client['nwaveoutput']
         doc=db['nwave']
+        doc['sessionId']=sessionId
         print(doc)
         for document in db:
             print(document)
