@@ -10,27 +10,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
-
-if 'VCAP_SERVICES' in os.environ:
-    vcap = json.loads(os.getenv('VCAP_SERVICES'))
-    print('Found VCAP_SERVICES')
-    if 'cloudantNoSQLDB' in vcap:
-        creds = vcap['cloudantNoSQLDB'][0]['credentials']
-        user = creds['username']
-        password = creds['password']
-        url = 'https://' + creds['host']
-        client = Cloudant(user, password, url=url, connect=True)
-        
-elif os.path.isfile('vcap-local.json'):
-    with open('vcap-local.json') as f:
-        vcap = json.load(f)
-        print('Found local VCAP_SERVICES')
-        creds = vcap['services']['cloudantNoSQLDB'][0]['credentials']
-        user = creds['username']
-        password = creds['password']
-        url = 'https://' + creds['host']
-        client = Cloudant(user, password, url=url, connect=True)
-        
+user= "199e9aa2-712e-49c8-968f-f1c1baf086f0-bluemix"
+password= "6c660ff03ea2090d0aa5fe426c7b7d64bc0a07b490053bad52222cca4315e59a"
+host= "199e9aa2-712e-49c8-968f-f1c1baf086f0-bluemix.cloudant.com"
+url = 'https://' + host
+client = Cloudant(user, password, url=url, connect=True)    
 app = Flask(__name__)
 app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 
@@ -53,7 +37,10 @@ def webhook():
             output[sessionId]=[weightage]
         print(output)
         op={sessionId:weightage}
-        db.create_document(op)
+        if client:
+            db.create_document(op)
+        else:
+            print("document not created")
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
