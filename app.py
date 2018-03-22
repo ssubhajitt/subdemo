@@ -40,6 +40,9 @@ def webhook():
         session = client.session()
         print('Username: {0}'.format(session['userCtx']['name']))
         print('Databases: {0}'.format(client.all_dbs()))
+        my_database = client['nwave-output']
+        for document in my_database:
+            print(document)
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
