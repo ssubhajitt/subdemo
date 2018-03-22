@@ -20,7 +20,7 @@ def homepage():
 @app.route('/webhook',methods=['POST'])
 def webhook():
     url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"
-    output={}
+    global output={}
     try:
         req=request.get_json(silent=True,force=True)
         sessionId=req.get("sessionId")
