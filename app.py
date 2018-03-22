@@ -10,9 +10,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
-user= "199e9aa2-712e-49c8-968f-f1c1baf086f0-bluemix"
-password= "6c660ff03ea2090d0aa5fe426c7b7d64bc0a07b490053bad52222cca4315e59a"
-host= "199e9aa2-712e-49c8-968f-f1c1baf086f0-bluemix.cloudant.com"
+
+user= "9ef80d52-30b9-4e45-833a-75059db0825c-bluemix"
+password= "79d7c792bb13072da32aecc7dc3777e28780d6d11619795d54d717d2abbd62e5"
+host= "9ef80d52-30b9-4e45-833a-75059db0825c-bluemix.cloudant.com"
 url = 'https://' + host
 client = Cloudant(user, password, url=url, connect=True)    
 app = Flask(__name__)
@@ -41,7 +42,6 @@ def webhook():
         print('Username: {0}'.format(session['userCtx']['name']))
         print('Databases: {0}'.format(client.all_dbs()))
         db = client['nwave-output']
-        my_doc=db.createdocument(output)
         
         for document in db:
             print(document)
