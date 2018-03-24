@@ -44,6 +44,7 @@ def webhook():
         db = client['nwaveoutput']
         doc=db['nwave']
         doc['sessionId']=sessionId
+        doc.save()
         print(doc)
         for document in db:
             print(document)
@@ -103,14 +104,11 @@ def storedata():
 @app.route('/getop')
 def getop():
     try:
-        df=pd.read_pickle('output.json')
-        print(df)
         Id=session['Id']
-        session.pop('Id', None)
         print(Id)
         return render_template('output.html',Id=Id)
     except:
-        return render_template('nop.html')
+        return "Sorry something went worng"
     
 
 
