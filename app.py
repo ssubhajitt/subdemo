@@ -103,15 +103,14 @@ def storedata():
 
 @app.route('/getop')
 def getop():
-    try:
-        session = client.session()
-        db = client['nwaveoutput']
-        doc=db['nwave']
-        sessionId=request.args.get['sessionId']
-        print(doc[sessionId])
-        return render_template('output.html')
-    except:
-        return "Sorry something went wrong"
+    session = client.session()
+    db = client['nwaveoutput']
+    doc=db['nwave']
+    sessionId=request.args.get['sessionId']
+    print(doc[sessionId])
+    return render_template('output.html')
+    #except:
+     #   return "Sorry something went wrong"
     
 
 
