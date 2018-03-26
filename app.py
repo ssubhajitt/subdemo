@@ -106,8 +106,9 @@ def getop():
     session = client.session()
     db = client['nwaveoutput']
     doc=db['nwave']
-    sessionId=request.args.get['sessionId']
-    print(doc[sessionId])
+    result_collection = Result(db.all_docs)
+    print ("Retrieved minimal document:\n{0}\n".format(result_collection[0]))
+    #print(doc[sessionId])
     return render_template('output.html')
     #except:
      #   return "Sorry something went wrong"
