@@ -39,13 +39,13 @@ def webhook():
         else:
             output[sessionId]=[weightage]
         print(output)
-        op={sessionId:weightage}
+        op={'sessionId':sessionId,
+            'weightage':weightage}
         session = client.session()
         print('Username: {0}'.format(session['userCtx']['name']))
         print('Databases: {0}'.format(client.all_dbs()))
         db = client['nwaveoutput']
-        doc=db['nwave']
-        doc['sessionId']=sessionId
+        doc= db.create_document(op)
         doc.save()
         print(doc)
         for document in db:
