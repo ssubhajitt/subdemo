@@ -3,6 +3,7 @@ import os
 import requests
 import pickle
 import pandas as pd
+import cloudant
 from cloudant import Cloudant
 from flask import Flask , request, make_response , render_template, session
 from sklearn.preprocessing import Imputer
