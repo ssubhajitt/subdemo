@@ -104,11 +104,13 @@ def storedata():
 @app.route('/getop')
 def getop():
     try:
-        Id=session['Id']
-        print(Id)
-        return render_template('output.html',Id=Id)
+        session = client.session()
+        db = client['nwaveoutput']
+        sessionId=request.args.get['sessionId']
+        print(doc[sessionId])
+        return render_template('output.html')
     except:
-        return "Sorry something went worng"
+        return "Sorry something went wrong"
     
 
 
