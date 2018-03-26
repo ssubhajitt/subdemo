@@ -108,10 +108,10 @@ def getop():
     session = client.session()
     db = client['nwaveoutput']
     doc=db['nwave']
-    result_collection = Result(db.all_docs)
-    print ("Retrieved minimal document:\n{0}\n".format(result_collection[0]))
+    op_c = Result(db.all_docs)
+    print ("Retrieved minimal document:\n{0}\n".format(op_c[0]))
     #print(doc[sessionId])
-    return render_template('output.html')
+    return render_template('output.html',Id=op_c)
     #except:
      #   return "Sorry something went wrong"
     
