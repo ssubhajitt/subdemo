@@ -107,7 +107,7 @@ def storedata():
 def getop():
     session = client.session()
     db = client['nwaveoutput']
-    query = cloudant.query.Query(db,selector="sessionId": "TESTINPUT1"})
+    query = cloudant.query.Query(db,selector={"sessionId": "TESTINPUT1"})
     print(query)
     return render_template('output.html',Id="Success")
     #except:
