@@ -3,7 +3,7 @@ local.avatar = "iqlogo.png";
 
 var remote = {};
 remote.avatar = "https://developers.viber.com/images/apps/apiai-icon.png";
-
+var SESSIONID=createDynamicURL();
 
 var accessToken = "3c44974b43934bbdb1fdc030b17df30e";
 var baseUrl = "https://api.api.ai/v1/";
@@ -67,8 +67,6 @@ $(".mytext").on("keyup", function(e){
 });
 
 resetChat();
-
-var SESSIONID="TESTINPUT1"
 
 function queryBot(text) {
             $.ajax({
