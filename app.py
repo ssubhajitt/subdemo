@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import PCA
 from cloudant.error import CloudantException
-from cloudant.result import Result, ResultByKey
+from cloudant.result import Result, ResultByKey,QueryResult
 
 user= "9ef80d52-30b9-4e45-833a-75059db0825c-bluemix"
 password= "79d7c792bb13072da32aecc7dc3777e28780d6d11619795d54d717d2abbd62e5"
