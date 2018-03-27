@@ -68,7 +68,7 @@ $(".mytext").on("keyup", function(e){
 
 resetChat();
 
-var SESSIONID=Date.now()
+var SESSIONID="TESTINPUT1"
 
 function queryBot(text) {
             $.ajax({
