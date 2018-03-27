@@ -98,17 +98,17 @@ def intRegression(req):
 
 
 
-@app.route('/getop')
-def getop():
+@app.route('/getop/<sessionId>')
+def getop(sessionId):
     session = client.session()
     db = client['nwaveoutput']
-    query = cloudant.query.Query(db,selector={"sessionId": "TESTINPUT1"})
+    query = cloudant.query.Query(db,selector={"sessionId": sessionId})
     query_result = QueryResult(query)
     print(query_result)
     for doc in query_result:
         print(doc['weightage'])
     
-    return render_template('output.html',weightage=query_result.value)
+    return render_template('output.html',weightage=query_result)
     #except:
      #   return "Sorry something went wrong"
     
