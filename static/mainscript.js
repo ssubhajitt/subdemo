@@ -87,11 +87,4 @@ function queryBot(text) {
                 }
             });
     }
-$("#showOP").on('click',function(){
-    $(".op").toggle();
-});
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#op").load("output.html #op");
-    });
-});
+
