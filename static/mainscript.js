@@ -88,14 +88,5 @@ function queryBot(text) {
                 }
             });
     }
-$('#reslink').click(function(e){
-    e.preventDefault();
-    $.ajax({
-        type: "GET",
-        url: "https://nwave-ideabot-flask-webhook-p.herokuapp.com/getop/"+SESSIONID,
-        data: { },
-        success: function(data){
-            $('#maincont').html(data);
-        }
-    });
-});
+URL="https://nwave-ideabot-flask-webhook-p.herokuapp.com/"+SESSIONID
+$("a").prop("href", URL)
