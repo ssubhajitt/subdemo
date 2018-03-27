@@ -109,8 +109,9 @@ def getop():
     session = client.session()
     db = client['nwaveoutput']
     query = cloudant.query.Query(db,selector={"sessionId": "TESTINPUT1"})
-    print(query)
-    return render_template('output.html',Id="Success")
+    query_result = QueryResult(query)
+    print(query_result)
+    return render_template('output.html',Id=query_result)
     #except:
      #   return "Sorry something went wrong"
     
