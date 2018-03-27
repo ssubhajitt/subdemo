@@ -96,13 +96,7 @@ def intRegression(req):
     print(op)
     return op
 
-@app.route('/storedata',methods=['POST'])
-def storedata():
-    sid=request.get('sessionId')
-    weight=request.get('key')
-    print ("%s :  %s" %(sid,weight))
-    print (request.data)
-    return ""
+
 
 @app.route('/getop')
 def getop():
@@ -114,7 +108,7 @@ def getop():
     for doc in query_result:
         print(doc)
     op=doc['weightage']
-    return render_template('output.html',Id=op)
+    return render_template('output.html',weightage=op)
     #except:
      #   return "Sorry something went wrong"
     
