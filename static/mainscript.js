@@ -67,7 +67,8 @@ $(".mytext").on("keyup", function(e){
 });
 
 resetChat();
-
+var a=0;
+var SESSIONID="TESTINPUT%s"%(++a)
 
 function queryBot(text) {
             $.ajax({
@@ -78,7 +79,7 @@ function queryBot(text) {
                 headers: {
                     "Authorization": "Bearer " + accessToken
                 },
-                data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
+                data: JSON.stringify({ query: text, lang: "en", sessionId: SESSIONID }),
                 success: function(data) {
                     insertChat("remote",data.result.fulfillment.speech);
                 },
@@ -87,4 +88,14 @@ function queryBot(text) {
                 }
             });
     }
-
+$('#reslink').click(function(e){
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "sample.html",
+        data: { },
+        success: function(data){
+            $('#maincont').html(data);
+        }
+    });
+});
