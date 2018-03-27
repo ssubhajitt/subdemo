@@ -3,7 +3,8 @@
 <body bgcolor=black>
 <font face="Trebuchet MS" color=white>
   <h2>Total Estimated Person Hours: {{weightage}} </h2>
-<table style="width:100%">
+  {% for doc in query_result %}
+  <li>{{ doc['weightage'] }}</li><table style="width:100%">
   <tr>
     <th>Stage</th>
     <th>Weightage</th> 
@@ -11,19 +12,21 @@
   </tr>
   <tr>
     <td>Design: </td>
-    <td>{{weightage*0.25}} Person Days</td>
+    <td>weightage*0.25}} Person Days</td>
    
   </tr>
   <tr>
     <td>Development:</td>
-    <td>{{weightage*0.50}} Person Days</td>
+    <td>weightage*0.50}} Person Days</td>
     
   </tr>
   <tr>
     <td>Unit Testing:</td>
-    <td>{{weightage*0.25}} Person Days</td>
+    <td>weightage*0.25}} Person Days</td>
    
   </tr>
 </table>
+  
+{% endfor %} 
 </body>
 </html>
