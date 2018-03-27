@@ -67,8 +67,8 @@ $(".mytext").on("keyup", function(e){
 });
 
 resetChat();
-var a=0;
-var SESSIONID="TESTINPUT%s"%(++a)
+
+var SESSIONID=Date.now()
 
 function queryBot(text) {
             $.ajax({
@@ -92,7 +92,7 @@ $('#reslink').click(function(e){
     e.preventDefault();
     $.ajax({
         type: "GET",
-        url: "sample.html",
+        url: "https://nwave-ideabot-flask-webhook-p.herokuapp.com/getop/"+SESSIONID,
         data: { },
         success: function(data){
             $('#maincont').html(data);
