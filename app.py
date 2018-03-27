@@ -108,7 +108,7 @@ def getop():
     for doc in query_result:
         print(doc['weightage'])
     
-    return render_template('output.html',weightage=op)
+    return render_template('output.html',weightage=query_result.value)
     #except:
      #   return "Sorry something went wrong"
     
