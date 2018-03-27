@@ -3,7 +3,7 @@
 <body bgcolor=black>
 <font face="Trebuchet MS" color=white>
   <h2>Total Estimated Person Hours: </h2>
-  {% for id,rev,sid,weight in weightage %}
+  {% for doc in weightage %}
   <li>Interface {{loop.index}} :</li><table style="width:100%">
   <tr>
     <th>Stage</th>
@@ -12,17 +12,17 @@
   </tr>
   <tr>
     <td>Design: </td>
-    <td>{{weight*0.25}} Person Days</td>
+    <td>{{doc['weightage']*0.25}} Person Days</td>
    
   </tr>
   <tr>
     <td>Development:</td>
-    <td>{{weight*0.50}} Person Days</td>
+    <td>{{doc['weightage']*0.50}} Person Days</td>
     
   </tr>
   <tr>
     <td>Unit Testing:</td>
-    <td>{{weight*0.25}} Person Days</td>
+    <td>{{doc['weightage']*0.25}} Person Days</td>
    
   </tr>
 </table>
