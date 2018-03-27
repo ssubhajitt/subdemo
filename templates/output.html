@@ -1,33 +1,40 @@
-<!DOCTYPE html>
 <html>
 <body bgcolor=black>
 <font face="Trebuchet MS" color=white>
   <h2>Total Estimated Person Hours: </h2>
   {% for doc in weightage %}
-  <li>Interface {{loop.index}} :</li><table style="width:100%">
-  <tr>
+  <li>Interface {{loop.index}} :</li>
+  <table><tr>
     <th>Stage</th>
     <th>Weightage</th> 
-    <th>Unit</th>
+   
   </tr>
   <tr>
     <td>Design: </td>
     <td>{{doc['weightage']*0.25}} Person Days</td>
-   
   </tr>
   <tr>
     <td>Development:</td>
     <td>{{doc['weightage']*0.50}} Person Days</td>
-    
   </tr>
   <tr>
     <td>Unit Testing:</td>
     <td>{{doc['weightage']*0.25}} Person Days</td>
-   
   </tr>
 </table>
   
 {% endfor %} 
-</font?
+</font>
+<style>
+table {
+    margin-left:10%;
+    padding:10px;
+    color:white;
+    width:50%;
+    border-collapse: collapse;
+    border: 1px solid white;
+    line-height:35px;
+}
+</style>
 </body>
 </html>
