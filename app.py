@@ -111,7 +111,10 @@ def getop():
     query = cloudant.query.Query(db,selector={"sessionId": "TESTINPUT1"})
     query_result = QueryResult(query)
     print(query_result)
-    return render_template('output.html',Id=query_result)
+    for doc in query_result:
+        print(doc)
+    op=doc['weightage']
+    return render_template('output.html',Id=op)
     #except:
      #   return "Sorry something went wrong"
     
