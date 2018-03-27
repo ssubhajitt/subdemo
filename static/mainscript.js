@@ -88,5 +88,19 @@ function queryBot(text) {
                 }
             });
     }
-URL="https://nwave-ideabot-flask-webhook-p.herokuapp.com/"+SESSIONID
-$("a").prop("href", URL)
+function createDynamicURL()
+{
+    //The variable to be returned
+    var URL;
+    URL="COG-EAS-IPM-nWAVE";
+    URL+=
+    function guid() {
+        function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+    return URL;
+}
