@@ -66,7 +66,7 @@ def webhook():
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
-        response="Estimated Value for the interface is :<strong> %s PD</strong>. <i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
+        response="Estimated Value for the interface is :<strong> %s PD <br> Please Click on the left to get detailed effort breakup!</strong>. <i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
     
