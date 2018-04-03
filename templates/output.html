@@ -3,23 +3,19 @@
 <font face="Trebuchet MS" color=white>
   <h2>Total Estimated Person Hours: </h2>
   {% for doc in weightage %}
-  <li>Interface {{loop.index}} :</li>
-  <table><tr>
-    <th>Stage</th>
-    <th>Weightage</th> 
-   
+  <table>
+  <tr>
+    <th>Interface name</th>
+    <th>Design</th> 
+    <th>Development</th>
+    <th>Unit Testing</th>
+    <ht>Interface Weightage</ht>
   </tr>
   <tr>
-    <td>Design: </td>
-    <td>{{'%0.2f'|format(doc['weightage']*0.25)}} Person Days</td>
-  </tr>
-  <tr>
-    <td>Development:</td>
-    <td>{{doc['weightage']*0.50}} Person Days</td>
-  </tr>
-  <tr>
-    <td>Unit Testing:</td>
-    <td>{{doc['weightage']*0.25}} Person Days</td>
+    <td>Interface {{loop.index}} :</td>
+    <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
+    <td>{{'%0.2f'|format(doc['weightage']*0.50)}} PD</td>
+    <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
   </tr>
 </table>
   
