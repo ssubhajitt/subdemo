@@ -34,6 +34,7 @@ def webhook():
     try:
         req=request.get_json(silent=True,force=True)
         sessionId=req.get("sessionId")
+        result=req.get("result")
         contexts=result.get("contexts")
         par=contexts[0].get("parameters")
         print(contexts[0])
