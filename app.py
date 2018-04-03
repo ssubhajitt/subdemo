@@ -36,6 +36,8 @@ def webhook():
         sessionId=req.get("sessionId")
         contexts=result.get("contexts")
         par=contexts[0].get("parameters")
+        print(contexts[0])
+        print(par)
         product=par.get("product.original")
         srcformat=par.get("Interface-type.original")
         srcprotocol=par.get("srcprotocol.original")
