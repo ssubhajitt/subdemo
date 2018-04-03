@@ -2,24 +2,25 @@
 <body bgcolor=black>
 <font face="Trebuchet MS" color=white>
   <h2>Total Estimated Person Hours: </h2>
-  {% for doc in weightage %}
   <table>
   <tr>
     <th>Interface name</th>
     <th>Design</th> 
     <th>Development</th>
     <th>Unit Testing</th>
-    <ht>Interface Weightage</ht>
+    <ht>Total Effort</ht>
   </tr>
+  {% for doc in weightage %}
   <tr>
     <td>Interface {{loop.index}} :</td>
+    <td>{{doc['product']-doc['srcformat']}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.50)}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
-  </tr>
-</table>
-  
+    <td>{{'%0.2f'|format(doc['weightage'])}} PD</td>
+  </tr>  
 {% endfor %} 
+</table>
 </font>
 <style>
 body{
