@@ -13,7 +13,7 @@
   {% for doc in weightage %}
   <tr>
     <td>Interface {{loop.index}} :</td>
-    <td>{{doc['product']-doc['srcformat']}} PD</td>
+    <td>{{doc['product']}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.50)}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
