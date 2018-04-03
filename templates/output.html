@@ -2,18 +2,18 @@
 <body bgcolor=black>
 <font face="Trebuchet MS" color=white>
   <h2>Total Estimated Person Hours: </h2>
-  <table>
+  <table style="overflow-x:auto;">
   <tr>
     <th>Interface name</th>
     <th>Design</th> 
     <th>Development</th>
     <th>Unit Testing</th>
-    <ht>Total Effort</ht>
+    <th>Total Effort</th>
   </tr>
   {% for doc in weightage %}
   <tr>
     <td>Interface {{loop.index}} :</td>
-    <td>{{doc['product']}} PD</td>
+    <td>{{doc['product']}}-{{doc['srcformat']}}:{{doc['srcprotocol']}} to {{doc['targetformat']}}:{{doc['targetprotocol']}} </td>
     <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.50)}} PD</td>
     <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
@@ -26,11 +26,21 @@
 body{
 background-color:black;
 }
+
+td {
+    text-align: left;
+    padding: 8px;
+}
+th{
+    text-align: center;
+}
+
+
 table {
-    margin-left:10%;
+table-layout: fixed;
     padding:10px;
     color:white;
-    width:50%;
+    width:800px;
     text-align:left;
     border-collapse: collapse;
     border: none;
