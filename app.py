@@ -34,14 +34,23 @@ def webhook():
     try:
         req=request.get_json(silent=True,force=True)
         sessionId=req.get("sessionId")
+        contexts=result.get("contexts")
+        par=contexts[0].get("parameters")
+        product=par.get("product.original")
+        srcformat=par.get("Interface-type.original")
+        srcprotocol=par.get("srcprotocol.original")
+        targetformat=par.get("targetmsgformat.original")
+        targetprotocol=par.get("targetprotocol.original")
         weightage=intRegression(req)
-        if sessionId in output:
-            output[sessionId].append(weightage)
-        else:
-            output[sessionId]=[weightage]
-        print(output)
         op={'sessionId':sessionId,
-            'weightage':weightage}
+            'weightage':weightage,
+            'product':product,
+            'srcformat':srcformat,
+            'srcprotocol':srcprotocol,
+            'targetformat':targetformat,
+            'targetprotocol':targetprotocol
+           }
+        print(op)
         session = client.session()
         print('Username: {0}'.format(session['userCtx']['name']))
         print('Databases: {0}'.format(client.all_dbs()))
@@ -54,7 +63,7 @@ def webhook():
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
-        response="Estimated Value for the interface is : %s Person Days. Do you need estimation for another interface ? (Yes/No) " %(weightage)
+        response="Estimated Value for the interface is :<strong> %s PD</strong>. <i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
     
