@@ -4,21 +4,21 @@
   <h2>Effort Breakup Details: </h2>
   <table style="overflow-x:auto;">
   <tr>
-    <th>Interface name</th>
-    <th>Interface</th>
-    <th>Design</th> 
-    <th>Development</th>
-    <th>Unit Testing</th>
-    <th>Total Effort</th>
+    <th width="5%">S.No</th>
+    <th width="35%">Interface</th>
+    <th width="9%">Design</th> 
+    <th width="17%">Development</th>
+    <th width="15%">Unit Testing</th>
+    <th width="20%">Total Effort</th>
   </tr>
   {% for doc in weightage %}
   <tr>
-    <td>Interface {{loop.index}} :</td>
-    <td>{{doc['product']}}-{{doc['srcformat']}}:{{doc['srcprotocol']}} to {{doc['targetformat']}}:{{doc['targetprotocol']}} </td>
-    <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
-    <td>{{'%0.2f'|format(doc['weightage']*0.50)}} PD</td>
-    <td>{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
-    <td>{{'%0.2f'|format(doc['weightage'])}} PD</td>
+    <td >{{loop.index}}</td>
+    <td >{{doc['product']}}<br>{{doc['srcformat']}}:{{doc['srcprotocol']}} to {{doc['targetformat']}}:{{doc['targetprotocol']}} </td>
+    <td >{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
+    <td >{{'%0.2f'|format(doc['weightage']*0.50)}} PD</td>
+    <td >{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
+    <td >{{'%0.2f'|format(doc['weightage'])}} PD</td>
   </tr>  
 {% endfor %} 
 </table>
@@ -48,7 +48,7 @@ table-layout: fixed;
     padding:10px;
     color:white;
     margin-left:5vw;
-    width:80vw;
+    width:85vw;
     text-align:left;
     line-height:35px;
     box-shadow: inset 0 5px 5px 0 white, 0 5px 5px 0 white;
