@@ -6,18 +6,18 @@
   <tr>
     <th width="5%">S.No</th>
     <th width="35%">Interface</th>
-    <th width="9%">Design</th> 
-    <th width="17%">Development</th>
-    <th width="15%">Unit Testing</th>
+    <th width="9%">Design(25%) in PD</th> 
+    <th width="17%">Development(50%) in PD</th>
+    <th width="15%">Unit Testing (25%) in PD</th>
     <th width="20%">Total Effort</th>
   </tr>
   {% for doc in weightage %}
   <tr>
     <td >{{loop.index}}</td>
     <td >{{doc['product']}}<br>{{doc['srcformat']}}:{{doc['srcprotocol']}} to {{doc['targetformat']}}:{{doc['targetprotocol']}} </td>
-    <td >{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
-    <td >{{'%0.2f'|format(doc['weightage']*0.50)}} PD</td>
-    <td >{{'%0.2f'|format(doc['weightage']*0.25)}} PD</td>
+    <td >{{'%0.2f'|format(doc['weightage']*0.25)}} </td>
+    <td >{{'%0.2f'|format(doc['weightage']*0.50)}} </td>
+    <td >{{'%0.2f'|format(doc['weightage']*0.25)}} </td>
     <td >{{'%0.2f'|format(doc['weightage'])}} PD</td>
   </tr>  
 {% endfor %} 
