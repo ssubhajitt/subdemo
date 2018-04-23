@@ -124,7 +124,14 @@ def getop(sessionId):
     #except:
      #   return "Sorry something went wrong"
     
-
+@app.route('/docx')
+def download_docx():
+    generate_docx(g.json_data)
+    with open("static/resume.docx", 'r') as f:
+        body = f.read()
+    response = make_response(body)
+    response.headers["Content-Disposition"] = "attachment; filename=resume.docx"
+    return response
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
