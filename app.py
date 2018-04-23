@@ -5,7 +5,8 @@ import pickle
 import pandas as pd
 import cloudant
 from cloudant import Cloudant
-from flask import Flask , request, make_response , render_template, session
+from docx import Document
+from flask import Flask , request, make_response , render_template, session,g
 from sklearn.preprocessing import Imputer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -123,7 +124,15 @@ def getop(sessionId):
     return render_template('output.html',weightage=query_result)
     #except:
      #   return "Sorry something went wrong"
-    
+
+        
+def generate_docx(json_data):
+    document = Document("static/template.docx")
+    document.add_heading("nWave-ideabot estimation")
+    document.add_paragraph("IPM Digital estimation assistance")
+    document.save("static/resume.docx")
+    return document
+
 @app.route('/docx')
 def download_docx():
     generate_docx(g.json_data)
