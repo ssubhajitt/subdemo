@@ -125,8 +125,7 @@ def getop(sessionId):
     #except:
      #   return "Sorry something went wrong"
 
-        
-def generate_docx(json_data):
+def generate_docx():
     document = Document("static/template.docx")
     document.add_heading("nWave-ideabot estimation")
     document.add_paragraph("IPM Digital estimation assistance")
@@ -135,7 +134,7 @@ def generate_docx(json_data):
 
 @app.route('/docx')
 def download_docx():
-    generate_docx(g.json_data)
+    generate_docx()
     with open("static/resume.docx", 'r') as f:
         body = f.read()
     response = make_response(body)
