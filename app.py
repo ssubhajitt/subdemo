@@ -40,19 +40,11 @@ def webhook():
         par=contexts[0].get("parameters")
         print(contexts[0])
         print(par)
-        product=par.get("product.original")
-        srcformat=par.get("Interface-type.original")
-        srcprotocol=par.get("srcprotocol.original")
-        targetformat=par.get("targetmsgformat.original")
-        targetprotocol=par.get("targetprotocol.original")
+
         weightage=intRegression(req)
         op={'sessionId':sessionId,
             'weightage':weightage,
-            'product':product,
-            'srcformat':srcformat,
-            'srcprotocol':srcprotocol,
-            'targetformat':targetformat,
-            'targetprotocol':targetprotocol
+            'parameters':par
            }
         print(op)
         session = client.session()
@@ -67,7 +59,7 @@ def webhook():
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
         session['Id']=sessionId
         
-        response="Estimated Value for the interface is :<strong> %s PD <br> Please Click on the left to get detailed effort breakup!</strong>. <i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
+        response="Estimated Value for the interface is :<strong> %s PD <br></strong><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
     
