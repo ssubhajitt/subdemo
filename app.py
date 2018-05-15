@@ -101,7 +101,23 @@ def intRegression(req):
     print(op)
     return op
 
-
+@app.route('/getop/<sessionId>')
+def getop(sessionId):
+    session = client.session()
+    db = client['nwaveoutput']
+    query = cloudant.query.Query(db,selector={"sessionId": sessionId})
+    result_collection = Result(db.all_docs, include_docs=True)
+    result = result_collection[sessionId]
+    print("REsult")
+    print(result)
+    query_result = QueryResult(query)
+    generate_docx(query_result)
+    print(query_result)
+   
+    for doc in query_result:
+        print(doc['weightage'])
+    
+    return render_template('output.html',weightage=query_result)
 
 
 port = os.getenv('VCAP_APP_PORT', '5000')
