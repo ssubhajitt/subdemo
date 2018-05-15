@@ -37,8 +37,8 @@ def webhook():
         sessionId=req.get("sessionId")
         result=req.get("result")
         contexts=result.get("contexts")
-        par=contexts[0].get("parameters")
-        print(contexts[0])
+        par=contexts[2].get("parameters")
+        print(contexts[2])
         print(par)
 
         weightage=intRegression(req)
