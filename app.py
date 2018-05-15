@@ -103,35 +103,6 @@ def intRegression(req):
 
 
 
-@app.route('/getop/<sessionId>')
-def getop(sessionId):
-    session = client.session()
-    db = client['nwaveoutput']
-    query = cloudant.query.Query(db,selector={"sessionId": sessionId})
-    query_result = QueryResult(query)
-    print(query_result)
-    for doc in query_result:
-        print(doc['weightage'])
-    
-    return render_template('output.html',weightage=query_result)
-    #except:
-     #   return "Sorry something went wrong"
-
-def generate_docx():
-    document = Document("static/template.docx")
-    document.add_heading("nWave-ideabot estimation")
-    document.add_paragraph("IPM Digital estimation assistance")
-    document.save("static/resume.docx")
-    return document
-
-@app.route('/docx')
-def download_docx():
-    generate_docx()
-    with open("static/resume.docx", 'r') as f:
-        body = f.read()
-    response = make_response(body)
-    response.headers["Content-Disposition"] = "attachment; filename=resume.docx"
-    return response
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
