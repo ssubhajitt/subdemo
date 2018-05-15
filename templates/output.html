@@ -1,35 +1,36 @@
 <html>
 <body bgcolor=black>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <font face="Trebuchet MS" color=white>
   <h2>Effort Breakup Details: </h2>
   <table style="overflow-x:auto;">
   <tr>
     <th width="5%">S.No</th>
     <th width="35%">Interface</th>
-    <th width="9%">Design (25%) in PD</th> 
-    <th width="17%">Development (50%) in PD</th>
-    <th width="15%">Unit Testing (25%) in PD</th>
+    <th width="9%">Design</th> 
+    <th width="17%">Development</th>
+    <th width="15%">Unit Testing</th>
     <th width="20%">Total Effort</th>
   </tr>
   {% for doc in weightage %}
   <tr>
     <td >{{loop.index}}</td>
-    <td >{{doc['product']}}<br>{{doc['srcformat']}}:{{doc['srcprotocol']}} to {{doc['targetformat']}}:{{doc['targetprotocol']}} </td>
+    <td></td>
+    #<td >{{doc['parameters']['product.original']}}</td>
     <td >{{'%0.2f'|format(doc['weightage']*0.25)}} </td>
     <td >{{'%0.2f'|format(doc['weightage']*0.50)}} </td>
     <td >{{'%0.2f'|format(doc['weightage']*0.25)}} </td>
     <td >{{'%0.2f'|format(doc['weightage'])}} PD</td>
   </tr>  
 {% endfor %} 
-</table>
-<a href="/docx" class="btn btn-default btn-lg"><span class="network-name">.DOCX</span></a>
+</table><br>
+<a href="/docx" class="btn btn-default btn-lg"><span class="network-name">DOWNLOAD</span></a>
 </font>
 <style>
 body{
  background-color: rgba(0,0,0,0.8);
 border:none;
 }
-
 td,th {
     border-bottom: 1px solid #ddd;
 }
