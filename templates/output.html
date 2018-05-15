@@ -15,8 +15,7 @@
   {% for doc in weightage %}
   <tr>
     <td >{{loop.index}}</td>
-    <td></td>
-    #<td >{{doc['parameters']['product.original']}}</td>
+    <td > product</td>
     <td >{{'%0.2f'|format(doc['weightage']*0.25)}} </td>
     <td >{{'%0.2f'|format(doc['weightage']*0.50)}} </td>
     <td >{{'%0.2f'|format(doc['weightage']*0.25)}} </td>
