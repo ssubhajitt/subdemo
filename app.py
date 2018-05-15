@@ -106,18 +106,57 @@ def getop(sessionId):
     session = client.session()
     db = client['nwaveoutput']
     query = cloudant.query.Query(db,selector={"sessionId": sessionId})
-    #result_collection = Result(db.all_docs, include_docs=True)
-    #result = result_collection[sessionId]
-    #print("REsult")
-    #print(result)
     query_result = QueryResult(query)
-    #generate_docx(query_result)
+    generate_docx(query_result)
     print(query_result)
    
     for doc in query_result:
         print(doc['weightage'])
     
     return render_template('output.html',weightage=query_result)
+    #except:
+    #   return "Sorry something went wrong"
+        
+@app.route('/docx')
+def download_docx():
+    with open("static/estimate.docx", 'rb') as f:
+        body = f.read()
+    response = make_response(body)
+    response.headers["Content-Disposition"] = "attachment; filename=estimate.docx"
+    return response    
+
+def generate_docx(query_result):
+    document = Document("static/template.docx")      
+    
+    for doc in query_result:
+        document.add_heading("Interface Details:",level=2)
+        document.add_paragraph("Product           : " + doc['parameters']['product.original'])
+        document.add_paragraph("Source Protocol   : " + doc['parameters']['srcprotocol.original'])
+        document.add_paragraph("Source Msg Format : " + doc['parameters']['srcmsgformat.original'])
+        document.add_paragraph("Target Protocol   : " + doc['parameters']['targetprotocol.original'])
+        document.add_paragraph("Target Msg format :" + doc['parameters']['targetmsgformat.original'])
+        
+        document.add_heading("Effort Details:",level=2)       
+        document.add_paragraph("Design:" + str(doc['weightage']*0.25))
+        document.add_paragraph("Test:" + str(doc['weightage']*0.25))
+        document.add_paragraph("Development:" + str(doc['weightage']*0.5))
+        document.add_paragraph("Total Effort:" + str(doc['weightage']))
+        
+    document.add_heading("Consolidated Details:",level=2)    
+    table = document.add_table(rows=1, cols=6, style='TableGrid')
+    table = document.add_table(rows=1, cols=3)
+    hdr_cells = table.rows[0].cells
+    hdr_cells[0].text = 'S.No'
+    hdr_cells[1].text = 'Interface Details'
+    hdr_cells[2].text = 'Effort'
+    for doc in query_result:
+        row_cells = table.add_row().cells
+        
+        row_cells[1].text = doc['parameters']['product.original']
+        row_cells[2].text = str(doc['weightage'])
+    document.add_paragraph("End of the Document")
+    document.save("static/estimate.docx")
+    return document
 
 
 port = os.getenv('VCAP_APP_PORT', '5000')
