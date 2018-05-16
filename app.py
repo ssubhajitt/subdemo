@@ -40,7 +40,7 @@ def webhook():
         par=contexts[2].get("parameters")
         product=par.get("product")
         srcprotocol=par.get("srcprotocol")
-        srcformat=par.get("srcformat")
+        srcformat=par.get("srcmsgformat")
         targetmsgformat=par.get("targetmsgformat")
         targetprotocol=par.get("targetprotocol")
         #associateId=par.get("number-integer")
@@ -52,16 +52,16 @@ def webhook():
         exposedasapi=par.get("exposed-as-api")
         newexisting=par.get("new-existing")
         dispproduct=par.get("product.original")
-        dispsrcF=par.get("srcformat.original")
-        dispsrcP=par.get("srcprotocol.protocol")
-        disptargetF=par.get("targetmsgformat")
-        disptargetP=par.get("targetprotocol")
+        dispsrcF=par.get("srcmsgformat.original")
+        dispsrcP=par.get("srcprotocol.original")
+        disptargetF=par.get("targetmsgformat.original")
+        disptargetP=par.get("targetprotocol.original")
         weightage=intRegression(req)
         op={'sessionId':sessionId,
             'weightage':weightage,
             'product':product,
             'srcprotocol':srcprotocol,
-            'srcformat':srcformat,
+            'srcmsgformat':srcformat,
             'targetmsgformat':targetmsgformat,
             'targetprotocol':targetprotocol,
             #'associateId':associateId,
