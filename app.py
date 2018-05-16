@@ -37,15 +37,15 @@ def webhook():
         sessionId=req.get("sessionId")
         result=req.get("result")
         contexts=result.get("contexts")
-        par=contexts[1].get("parameters")
+        par=contexts[2].get("parameters")
         product=par.get("product")
         srcprotocol=par.get("srcprotocol")
         srcformat=par.get("srcformat")
         targetmsgformat=par.get("targetmsgformat")
         targetprotocol=par.get("targetprotocol")
-        associateId=par.get("number-integer")
+        #associateId=par.get("number-integer")
         operationcount=par.get("operationcount")
-        int-dataformat=par.get("int-dataformat")
+        intdataformat=par.get("int-dataformat")
         Interface-type=par.get("Interface-type")
         rulecount=par.get("rulecount")
         msgfieldcount=par.get("msgfieldcount")
@@ -64,9 +64,9 @@ def webhook():
             'srcformat':srcformat,
             'targetmsgformat':targetmsgformat,
             'targetprotocol':targetprotocol,
-            'associateId':associateId,
+            #'associateId':associateId,
             'operationcount':operationcount, 
-            'int-dataformat':int-dataformat,
+            'int-dataformat':intdataformat,
             'Interface-type': Interface-type,
             'rulecount':rulecount,
             'msgfieldcount':msgfieldcount,
