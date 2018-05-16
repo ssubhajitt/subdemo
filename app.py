@@ -46,16 +46,16 @@ def webhook():
         #associateId=par.get("number-integer")
         operationcount=par.get("operationcount")
         intdataformat=par.get("int-dataformat")
-        Interface-type=par.get("Interface-type")
+        Interfacetype=par.get("Interface-type")
         rulecount=par.get("rulecount")
         msgfieldcount=par.get("msgfieldcount")
-        exposed-as-api=par.get("exposed-as-api")
-        new-existing=par.get("new-existing")
-        disp-product=par.get("product.original")
-        disp-srcF=par.get("srcformat.original")
-        disp-srcP=par.get("srcprotocol.protocol")
-        disp-targetF=par.get("targetmsgformat")
-        disp-targetP=par.get("targetprotocol")
+        exposedasapi=par.get("exposed-as-api")
+        newexisting=par.get("new-existing")
+        dispproduct=par.get("product.original")
+        dispsrcF=par.get("srcformat.original")
+        dispsrcP=par.get("srcprotocol.protocol")
+        disptargetF=par.get("targetmsgformat")
+        disptargetP=par.get("targetprotocol")
         weightage=intRegression(req)
         op={'sessionId':sessionId,
             'weightage':weightage,
@@ -67,16 +67,16 @@ def webhook():
             #'associateId':associateId,
             'operationcount':operationcount, 
             'int-dataformat':intdataformat,
-            'Interface-type': Interface-type,
+            'Interface-type': Interfacetype,
             'rulecount':rulecount,
             'msgfieldcount':msgfieldcount,
-            'exposed-as-api':exposed-as-api,
-            'new-existing':new-existing,
-            'disp-product':disp-product,
-            'disp-srcF':disp-srcF,
-            'disp-srcP':disp-srcP,
-            'disp-targetF':disp-targetF,
-            'disp-targetP':disp-targetP
+            'exposed-as-api':exposedasapi,
+            'new-existing':newexisting,
+            'disp-product':dispproduct,
+            'disp-srcF':dispsrcF,
+            'disp-srcP':dispsrcP,
+            'disp-targetF':disptargetF,
+            'disp-targetP':disptargetP
            }
         print(op)
         session = client.session()
