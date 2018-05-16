@@ -44,7 +44,7 @@ def webhook():
         targetmsgformat=par.get("targetmsgformat")
         targetprotocol=par.get("targetprotocol")
         associateId=par.get("number-integer")
-        operationcount=par.get("operationcount
+        operationcount=par.get("operationcount")
         int-dataformat=par.get("int-dataformat")
         Interface-type=par.get("Interface-type")
         rulecount=par.get("rulecount")
