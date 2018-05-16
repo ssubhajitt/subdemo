@@ -86,8 +86,6 @@ def webhook():
         doc= db.create_document(op)
         doc.save()
         print(doc)
-        for document in db:
-            print(document)
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
        
         response="Estimated Value for the interface is :<strong> %s PD <br></strong><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
