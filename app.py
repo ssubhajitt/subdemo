@@ -38,13 +38,45 @@ def webhook():
         result=req.get("result")
         contexts=result.get("contexts")
         par=contexts[1].get("parameters")
-        print(contexts[1])
-        print(par)
-
+        product=par.get("product")
+        srcprotocol=par.get("srcprotocol")
+        srcformat=par.get("srcformat")
+        targetmsgformat=par.get("targetmsgformat")
+        targetprotocol=par.get("targetprotocol")
+        associateId=par.get("number-integer")
+        operationcount=par.get("operationcount
+        int-dataformat=par.get("int-dataformat")
+        Interface-type=par.get("Interface-type")
+        rulecount=par.get("rulecount")
+        msgfieldcount=par.get("msgfieldcount")
+        exposed-as-api=par.get("exposed-as-api")
+        new-existing=par.get("new-existing")
+        disp-product=par.get("product.original")
+        disp-srcF=par.get("srcformat.original")
+        disp-srcP=par.get("srcprotocol.protocol")
+        disp-targetF=par.get("targetmsgformat")
+        disp-targetP=par.get("targetprotocol")
         weightage=intRegression(req)
         op={'sessionId':sessionId,
             'weightage':weightage,
-            'parameters':par
+            'product':product,
+            'srcprotocol':srcprotocol,
+            'srcformat':srcformat,
+            'targetmsgformat':targetmsgformat,
+            'targetprotocol':targetprotocol,
+            'associateId':associateId,
+            'operationcount':operationcount, 
+            'int-dataformat':int-dataformat,
+            'Interface-type': Interface-type,
+            'rulecount':rulecount,
+            'msgfieldcount':msgfieldcount,
+            'exposed-as-api':exposed-as-api,
+            'new-existing':new-existing,
+            'disp-product':disp-product,
+            'disp-srcF':disp-srcF,
+            'disp-srcP':disp-srcP,
+            'disp-targetF':disp-targetF,
+            'disp-targetP':disp-targetP
            }
         print(op)
         session = client.session()
@@ -57,8 +89,7 @@ def webhook():
         for document in db:
             print(document)
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
-        session['Id']=sessionId
-        
+       
         response="Estimated Value for the interface is :<strong> %s PD <br></strong><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
