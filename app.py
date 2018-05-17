@@ -39,7 +39,7 @@ def webhook():
         srcformat=par.get("srcmsgformat")
         targetmsgformat=par.get("targetmsgformat")
         targetprotocol=par.get("targetprotocol")
-        #associateId=par.get("number-integer")
+        associateId=par.get("number-integer")
         operationcount=par.get("operationcount")
         intdataformat=par.get("int-dataformat")
         Interfacetype=par.get("Interface-type")
@@ -60,7 +60,7 @@ def webhook():
             'srcmsgformat':srcformat,
             'targetmsgformat':targetmsgformat,
             'targetprotocol':targetprotocol,
-            #'associateId':associateId,
+            'associateId':associateId,
             'operationcount':operationcount, 
             'int-dataformat':intdataformat,
             'Interface-type': Interfacetype,
@@ -86,7 +86,7 @@ def webhook():
         print(doc)
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
        
-        response="Estimated Value for the interface is :<strong> %s PD <br></strong><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
+        response="Estimated Value for the interface is :<strong> %s PD </strong>.PLEASE PROVIDE FEEDBACK IN THE EFFORT DETAILS PANE<br><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
     
