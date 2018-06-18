@@ -4,6 +4,7 @@ import requests
 import pickle
 import pandas as pd
 import cloudant
+import random
 from cloudant import Cloudant
 from docx import Document
 from flask import Flask , request, make_response , render_template, session,g
