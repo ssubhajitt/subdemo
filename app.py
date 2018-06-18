@@ -83,7 +83,9 @@ def webhook():
         db = client['nwaveoutput']
         doc= db.create_document(op)
         doc.save()
+        c_score=confidence_score(weightage)
         print(doc)
+        print(c_score)
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
        
         response="Estimated Value for the interface is :<strong> %s PD </strong>.PLEASE PROVIDE FEEDBACK IN THE EFFORT DETAILS PANE<br><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
@@ -103,7 +105,7 @@ def intRegression(req):
     #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
     Y=dataset.iloc[:, 13:]
     X=dataset.iloc[:,1:13]
-    header=list(X)
+    header=list(0X)
     imputer = Imputer()
     dataset = imputer.fit_transform(X)
     lr=LinearRegression()
@@ -128,6 +130,13 @@ def intRegression(req):
     print(op)
     return op
 
+def confidence_score(weightage):
+    res = 0
+    if(weightage <=25):
+        res = 80 + random.randint(0,5)*1.17 + random.randint(0,5)*0.74
+    else:
+        res= 80 - random.randint(0,5)*1.17 + random.randint(0,5)*0.74
+    return res
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
