@@ -89,7 +89,7 @@ def webhook():
         print(c_score)
         #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
        
-        response="Estimated Value for the interface is :<strong> %s PD </strong>.PLEASE PROVIDE FEEDBACK IN THE EFFORT DETAILS PANE<br><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage)
+        response="Estimated Value for the interface is :<strong> %s PD. Confidence level : <strong> %s .</strong> </strong>PLEASE PROVIDE FEEDBACK IN THE EFFORT DETAILS PANE.<br><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage,c_score)
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
     
