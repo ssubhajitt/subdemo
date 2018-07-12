@@ -26,7 +26,8 @@ app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 
 @app.route('/webhook',methods=['POST'])
 def webhook():
-    url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"
+    #url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"
+	url="https://subdemo.herokuapp.com/webhook"
     global output
     output={}
     try:
@@ -36,44 +37,30 @@ def webhook():
         contexts=result.get("contexts")
         par=contexts[2].get("parameters")
         product=par.get("product")
-        srcprotocol=par.get("srcprotocol")
-        srcformat=par.get("srcmsgformat")
-        targetmsgformat=par.get("targetmsgformat")
-        targetprotocol=par.get("targetprotocol")
-        associateId=par.get("number-integer")
-        operationcount=par.get("operationcount")
-        intdataformat=par.get("int-dataformat")
-        Interfacetype=par.get("Interface-type")
-        rulecount=par.get("rulecount")
-        msgfieldcount=par.get("msgfieldcount")
-        exposedasapi=par.get("exposed-as-api")
-        newexisting=par.get("new-existing")
-        dispproduct=par.get("product.original")
-        dispsrcF=par.get("srcmsgformat.original")
-        dispsrcP=par.get("srcprotocol.original")
-        disptargetF=par.get("targetmsgformat.original")
-        disptargetP=par.get("targetprotocol.original")
+		temp=par.get("temperature")
+		hum=par.get("humidity")
+        # srcprotocol=par.get("srcprotocol")
+        #srcformat=par.get("srcmsgformat")
+        #targetmsgformat=par.get("targetmsgformat")
+        #targetprotocol=par.get("targetprotocol")
+        #associateId=par.get("number-integer")
+        #operationcount=par.get("operationcount")
+        #intdataformat=par.get("int-dataformat")
+        #Interfacetype=par.get("Interface-type")
+        #rulecount=par.get("rulecount")
+        #msgfieldcount=par.get("msgfieldcount")
+        #exposedasapi=par.get("exposed-as-api")
+        #newexisting=par.get("new-existing")
+        #dispproduct=par.get("product.original")
+        #dispsrcF=par.get("srcmsgformat.original")
+        #dispsrcP=par.get("srcprotocol.original")
+        #disptargetF=par.get("targetmsgformat.original")
+        #disptargetP=par.get("targetprotocol.original")
         weightage=intRegression(req)
         op={'sessionId':sessionId,
             'weightage':weightage,
-            'product':product,
-            'srcprotocol':srcprotocol,
-            'srcmsgformat':srcformat,
-            'targetmsgformat':targetmsgformat,
-            'targetprotocol':targetprotocol,
-            'associateId':associateId,
-            'operationcount':operationcount, 
-            'int-dataformat':intdataformat,
-            'Interface-type': Interfacetype,
-            'rulecount':rulecount,
-            'msgfieldcount':msgfieldcount,
-            'exposed-as-api':exposedasapi,
-            'new-existing':newexisting,
-            'disp-product':dispproduct,
-            'disp-srcF':dispsrcF,
-            'disp-srcP':dispsrcP,
-            'disp-targetF':disptargetF,
-            'disp-targetP':disptargetP,
+            'temp':temp,
+            'hum':hum,
             'feedback':"Not Given",
             'admin-flag':0
            }
@@ -102,7 +89,8 @@ def webhook():
    
 def intRegression(req):
     #Machine Learning Model
-    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true",skip_header=1)
+    #dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true",skip_header=1)
+	dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/Temp.xlsx?raw=true",skip_header=1)
     #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
     Y=dataset.iloc[:, 13:]
     X=dataset.iloc[:,1:13]
