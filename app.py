@@ -38,7 +38,7 @@ def webhook():
         product=par.get("product")
         temp=par.get("temperature")
 	hum=par.get("humidity")
-        weightage=intRegression(req)
+	weightage=intRegression(req)
         op={'sessionId':sessionId,
             'weightage':weightage,
             'temp':temp,
