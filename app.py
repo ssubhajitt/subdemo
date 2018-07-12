@@ -26,8 +26,7 @@ app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 
 @app.route('/webhook',methods=['POST'])
 def webhook():
-    #url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"
-	url="https://subdemo.herokuapp.com/webhook"
+    url="https://subdemo.herokuapp.com/webhook"
     global output
     output={}
     try:
@@ -39,23 +38,6 @@ def webhook():
         product=par.get("product")
 		temp=par.get("temperature")
 		hum=par.get("humidity")
-        # srcprotocol=par.get("srcprotocol")
-        #srcformat=par.get("srcmsgformat")
-        #targetmsgformat=par.get("targetmsgformat")
-        #targetprotocol=par.get("targetprotocol")
-        #associateId=par.get("number-integer")
-        #operationcount=par.get("operationcount")
-        #intdataformat=par.get("int-dataformat")
-        #Interfacetype=par.get("Interface-type")
-        #rulecount=par.get("rulecount")
-        #msgfieldcount=par.get("msgfieldcount")
-        #exposedasapi=par.get("exposed-as-api")
-        #newexisting=par.get("new-existing")
-        #dispproduct=par.get("product.original")
-        #dispsrcF=par.get("srcmsgformat.original")
-        #dispsrcP=par.get("srcprotocol.original")
-        #disptargetF=par.get("targetmsgformat.original")
-        #disptargetP=par.get("targetprotocol.original")
         weightage=intRegression(req)
         op={'sessionId':sessionId,
             'weightage':weightage,
