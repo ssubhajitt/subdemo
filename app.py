@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import json
 import os
 import requests
@@ -55,16 +56,21 @@ def webhook():
             'feedback': 'Not Given',
             'admin-flag': 0,
             }
-        print op
+
+        # print op
+
         session = client.session()
-        print 'Username: {0}'.format(session['userCtx']['name'])
-        print 'Databases: {0}'.format(client.all_dbs())
+
+        # print 'Username: {0}'.format(session['userCtx']['name'])
+        # print 'Databases: {0}'.format(client.all_dbs())
+
         db = client['nwaveoutput']
         doc = db.create_document(op)
         doc.save()
         c_score = confidence_score(weightage)
-        print doc
-        print c_score
+
+        # print doc
+        # print c_score
 
         # send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
 
@@ -78,7 +84,9 @@ def webhook():
     res = {'speech': response, 'displayText': 'LOAD-PAGE',
            'source': 'nWave-estimation-chatbot'}
     res = json.dumps(res, indent=4)
-    print res
+
+    # print res
+
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
@@ -108,20 +116,25 @@ def intRegression(req):
     val = []
     result = req.get('result')
     contexts = result.get('contexts')
-    print contexts[0]
+
+    # print contexts[0]
+
     parameters = contexts[0].get('parameters')
     for i in header:
         str = parameters.get(i)
         print '%s %s ' % (i, str)
         val.append(str)
     ds = pd.DataFrame(val).T
-    print ds
+
+    # print ds
 
     # Prediction
 
     op_lrt = lr.predict(ds)
     op = round(op_lrt[0][0], 2)
-    print op
+
+    # print op
+
     return op
 
 
@@ -140,5 +153,6 @@ port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(port), use_reloader=True,
             debug=True)
+
 
 			
