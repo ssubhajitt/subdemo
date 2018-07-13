@@ -122,7 +122,9 @@ def intRegression(req):
     parameters = contexts[0].get('parameters')
     for i in header:
         str = parameters.get(i)
-        print '%s %s ' % (i, str)
+
+        # print '%s %s ' % (i, str)
+
         val.append(str)
     ds = pd.DataFrame(val).T
 
