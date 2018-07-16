@@ -2,7 +2,7 @@
 
 #- * -coding: utf - 8 - * -
 
-  import json
+import json
 import os
 import requests
 import pickle
@@ -33,16 +33,18 @@ import Result, ResultByKey, QueryResult
 
 user = '9ef80d52-30b9-4e45-833a-75059db0825c-bluemix'
 password = \
-  '79d7c792bb13072da32aecc7dc3777e28780d6d11619795d54d717d2abbd62e5'
+    '79d7c792bb13072da32aecc7dc3777e28780d6d11619795d54d717d2abbd62e5'
 host = '9ef80d52-30b9-4e45-833a-75059db0825c-bluemix.cloudant.com'
 url = 'https://' + host
 client = Cloudant(user, password, url = url, connect = True)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'QWERTYUIOPASDFGHJKLZXCVBNM'
 
-@app.route('/webhook', methods = ['POST'])
+
+@
+app.route('/webhook', methods = ['POST'])
 def webhook():
-  url = 'https://subdemo.herokuapp.com/webhook'
+    url = 'https://subdemo.herokuapp.com/webhook'
 global output
 output = {}
 try:
@@ -59,12 +61,12 @@ print hum# hum = par.get("humidity")
 
 weightage = intRegression(req)
 op = {
-  'sessionId': sessionId,
-  'weightage': weightage,
-  'temp': temp,
-  'hum': hum,
-  'feedback': 'Not Given',
-  'admin-flag': 0,
+    'sessionId': sessionId,
+    'weightage': weightage,
+    'temp': temp,
+    'hum': hum,
+    'feedback': 'Not Given',
+    'admin-flag': 0,
 }
 
 print op
@@ -81,21 +83,20 @@ c_score = confidence_score(weightage)
 # print doc# print c_score
 
 # send_data = requests.post(url, data = {
-  'key': weightage,
-  'sessionId': sessionId
+    'key': weightage,
+    'sessionId': sessionId
 })
 
 response = \
-  'Estimated Value for the interface is :<strong> %s PD. Confidence level : <strong> %s .</strong> </strong>PLEASE PROVIDE FEEDBACK IN THE EFFORT DETAILS PANE.<br><i>Do you need estimation for another interface ? (Yes/No) </i>'\ %
-  (weightage, c_score)
+    'Estimated Value for the interface is :<strong> %s PD. Confidence level : <strong> %s .</strong> </strong>PLEASE PROVIDE FEEDBACK IN THE EFFORT DETAILS PANE.<br><i>Do you need estimation for another interface ? (Yes/No) </i>'\ % (weightage, c_score)
 except:
-  response = \
-  'Sorry Bot has faced an issue! Please try after sometime!'
+    response = \
+    'Sorry Bot has faced an issue! Please try after sometime!'
 
 res = {
-  'speech': response,
-  'displayText': 'LOAD-PAGE',
-  'source': 'nWave-estimation-chatbot'
+    'speech': response,
+    'displayText': 'LOAD-PAGE',
+    'source': 'nWave-estimation-chatbot'
 }
 res = json.dumps(res, indent = 4)
 
@@ -105,12 +106,13 @@ r = make_response(res)
 r.headers['Content-Type'] = 'application/json'
 return r
 
+
 def intRegression(req):
 
-  #Machine Learning Model# dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true", skip_header = 1)
+    #Machine Learning Model# dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true", skip_header = 1)
 
 dataset = \
-  pd.read_excel('https://github.com/ssubhajitt/subdemo/Temp.xlsx?raw=true', skip_header = 1)
+    pd.read_excel('https://github.com/ssubhajitt/subdemo/Temp.xlsx?raw=true', skip_header = 1)
 
 # dataset = pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx", skip_header = 1)
 
@@ -133,7 +135,7 @@ print contexts[0]
 
 parameters = contexts[0].get('parameters')
 for i in header:
-  str = parameters.get(i)
+    str = parameters.get(i)
 
 print '%s %s ' % (i, str)
 
@@ -151,17 +153,17 @@ print op
 
 return op
 
+
 def confidence_score(weightage):
-  res = 0
+    res = 0
 if weightage <= 25 and weightage >= 10:
-  res = 80 + random.randint(0, 5) * 1.17 + random.randint(0, 5)\ *
-  0.74
+    res = 80 + random.randint(0, 5) * 1.17 + random.randint(0, 5)\ * 0.74
 else :
-  res = 80 - random.randint(0, 5) * 1.17 + random.randint(0, 5)\ *
-  0.74
+    res = 80 - random.randint(0, 5) * 1.17 + random.randint(0, 5)\ * 0.74
 return res
+
 
 port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == '__main__':
-  app.run(host = '0.0.0.0', port = int(port), use_reloader = True,
-    debug = True)
+    app.run(host = '0.0.0.0', port = int(port), use_reloader = True,
+        debug = True)
