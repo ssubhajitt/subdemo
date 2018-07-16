@@ -49,18 +49,18 @@ def webhook():
     # hum=par.get("humidity")
 
         weightage = intRegression(req)
-        op = {
-            'sessionId': sessionId,
-            'weightage': weightage,
-            'temp': temp,
-            'hum': hum,
-            'feedback': 'Not Given',
-            'admin-flag': 0,
-            }
+        #op = {
+         #   'sessionId': sessionId,
+          #  'weightage': weightage,
+           # 'temp': temp,
+            #'hum': hum,
+            #'feedback': 'Not Given',
+            #'admin-flag': 0,
+            #}
 
-        print (op)
+        #print (op)
 
-        session = client.session()
+        # session = client.session()
 
         # print 'Username: {0}'.format(session['userCtx']['name'])
         # print 'Databases: {0}'.format(client.all_dbs())
@@ -68,7 +68,7 @@ def webhook():
         #db = client['nwaveoutput']
         #doc = db.create_document(op)
         #doc.save()
-        c_score = confidence_score(weightage)
+        #c_score = confidence_score(weightage)
 
         # print doc
         # print c_score
@@ -77,7 +77,7 @@ def webhook():
 
         response = \
             'Estimated Value for the interface is :<strong> %s PD. Confidence level : <strong> %s .</strong> </strong>PLEASE PROVIDE FEEDBACK IN THE EFFORT DETAILS PANE.<br><i>Do you need estimation for another interface ? (Yes/No) </i>' \
-            % (weightage, c_score)
+            % (weightage)
     except:
         response = \
             'Sorry Bot has faced an issue! Please try after sometime!'
