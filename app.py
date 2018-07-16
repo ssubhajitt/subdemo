@@ -40,7 +40,7 @@ def webhook():
         sessionId = req.get('sessionId')
         result = req.get('result')
         contexts = result.get('contexts')
-        par = contexts[2].get('parameters')
+        par = contexts.get('parameters')
         product = par.get('product')
         temp = par.get('temperature')
         hum = par.get('humidity')
@@ -103,8 +103,8 @@ def intRegression(req):
 
     # dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
 
-    Y = dataset.iloc[:, 13:]
-    X = dataset.iloc[:, 1:13]
+    Y = dataset.iloc[:, 10:]
+    X = dataset.iloc[:, 1:10]
     header = list(X)
     imputer = Imputer()
     dataset = imputer.fit_transform(X)
