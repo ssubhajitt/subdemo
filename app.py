@@ -120,7 +120,7 @@ def intRegression(req):
     result = req.get('result')
     contexts = result.get('contexts')
 
-    print contexts[0]
+    #print contexts[0]
 
     parameters = contexts[0].get('parameters')
     for i in header:
