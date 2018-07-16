@@ -58,7 +58,7 @@ def webhook():
             'admin-flag': 0,
             }
 
-        # print op
+        print op
 
         session = client.session()
 
@@ -105,38 +105,40 @@ def intRegression(req):
     # dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
 
     Y = dataset.iloc[:, 10:]
+	print Y
     X = dataset.iloc[:, 1:10]
+	print X
     header = list(X)
     imputer = Imputer()
     dataset = imputer.fit_transform(X)
     lr = LinearRegression()
     model_int = lr.fit(X, Y)
-
+	print model_int
     # Data Processing
 
     val = []
     result = req.get('result')
     contexts = result.get('contexts')
 
-    # print contexts[0]
+    print contexts[0]
 
     parameters = contexts[0].get('parameters')
     for i in header:
         str = parameters.get(i)
 
-        # print '%s %s ' % (i, str)
+        print '%s %s ' % (i, str)
 
         val.append(str)
     ds = pd.DataFrame(val).T
 
-    # print ds
+    print ds
 
     # Prediction
 
     op_lrt = lr.predict(ds)
     op = round(op_lrt[0][0], 2)
 
-    # print op
+    print op
 
     return op
 
@@ -158,5 +160,6 @@ if __name__ == '__main__':
             debug=True)
 
 
+			
 			
 			
