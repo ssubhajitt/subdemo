@@ -105,9 +105,9 @@ def intRegression(req):
     # dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
 
     Y = dataset.iloc[:, 10:]
-	print Y
+    print Y
     X = dataset.iloc[:, 1:10]
-	print X
+    print X
     header = list(X)
     imputer = Imputer()
     dataset = imputer.fit_transform(X)
