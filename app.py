@@ -65,9 +65,9 @@ def webhook():
         # print 'Username: {0}'.format(session['userCtx']['name'])
         # print 'Databases: {0}'.format(client.all_dbs())
 
-        db = client['nwaveoutput']
-        doc = db.create_document(op)
-        doc.save()
+        #db = client['nwaveoutput']
+        #doc = db.create_document(op)
+        #doc.save()
         c_score = confidence_score(weightage)
 
         # print doc
@@ -80,7 +80,7 @@ def webhook():
             % (weightage, c_score)
     except:
         response = \
-            'Sorry Bot has faced an issue! Please try after sometime!'% (weightage, c_score)
+            'Sorry Bot has faced an issue! Please try after sometime!'
 
     res = {'speech': response, 'displayText': 'LOAD-PAGE',
            'source': 'nWave-estimation-chatbot'}
