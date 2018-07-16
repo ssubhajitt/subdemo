@@ -113,7 +113,7 @@ def intRegression(req):
     dataset = imputer.fit_transform(X)
     lr = LinearRegression()
     model_int = lr.fit(X, Y)
-	print (model_int)
+    #print (model_int)
     # Data Processing
 
     val = []
