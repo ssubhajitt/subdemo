@@ -48,7 +48,7 @@ def webhook():
 	#print hum
     # hum=par.get("humidity")
 
-        weightage = intRegression(req)
+        weightage = intRegression()
         #op = {
          #   'sessionId': sessionId,
           #  'weightage': weightage,
@@ -68,7 +68,7 @@ def webhook():
         #db = client['nwaveoutput']
         #doc = db.create_document(op)
         #doc.save()
-        #c_score = confidence_score(weightage)
+        c_score = confidence_score(weightage)
 
         # print doc
         # print c_score
@@ -93,7 +93,7 @@ def webhook():
     return r
 
 
-def intRegression(req):
+def intRegression():
 
     # Machine Learning Model
     # dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true",skip_header=1)
@@ -116,31 +116,31 @@ def intRegression(req):
     #print (model_int)
     # Data Processing
 
-    val = []
-    result = req.get('result')
-    contexts = result.get('contexts')
+    #val = []
+    #result = req.get('result')
+    #contexts = result.get('contexts')
 
     #print contexts[0]
 
-    parameters = contexts[0].get('parameters')
-    for i in header:
-        str = parameters.get(i)
+    #parameters = contexts[0].get('parameters')
+    #for i in header:
+     #   str = parameters.get(i)
 
         #print '%s %s ' % (i, str)
 
-        val.append(str)
-    ds = pd.DataFrame(val).T
+      #  val.append(str)
+    #ds = pd.DataFrame(val).T
 
-    print (ds)
+    #print (ds)
 
     # Prediction
 
-    op_lrt = lr.predict(ds)
-    op = round(op_lrt[0][0], 2)
+    #op_lrt = lr.predict(ds)
+    #op = round(op_lrt[0][0], 2)
 
-    print (op)
+    #print (op)
 
-    return op
+    return model_int
 
 
 def confidence_score(weightage):
