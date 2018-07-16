@@ -145,7 +145,7 @@ def intRegression():
 
 def confidence_score(temp):
     res = 0
-    if weightage <= 25 and weightage >= 10:
+    if temp <= 25 and temp >= 10:
         res = 80 + random.randint(0, 5) * 1.17 + random.randint(0, 5) \
             * 0.74
     else:
