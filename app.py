@@ -80,7 +80,7 @@ def webhook():
             % (weightage, c_score)
     except:
         response = \
-            'Sorry Bot has faced an issue! Please try after sometime!'
+            'Sorry Bot has faced an issue! Please try after sometime!'% (weightage, c_score)
 
     res = {'speech': response, 'displayText': 'LOAD-PAGE',
            'source': 'nWave-estimation-chatbot'}
