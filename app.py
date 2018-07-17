@@ -25,7 +25,7 @@ app = Flask(__name__)
 #app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 @app.route('/webhook',methods=['POST'])
 def webhook():
-    url="https://subdemo.herokuapp.com/webhook"	    
+    url="https://subdemoiot.herokuapp.com"	    
     global output
     output={}
     try:
