@@ -40,20 +40,21 @@ def webhook():
 		#print temp
         hum = req.get('humidity')
 		#print hum
-        #weightage=intRegression(req)
+        weightage=intRegression(req)
+        print(weightage)
         op={'temp': temp,'hum': hum}
         print(op)
-        dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/blob/master/Temp.xlsx?raw=true",skip_header=1)
-        print(op)
+        #dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/blob/master/Temp.xlsx?raw=true",skip_header=1)
+        #print(op)
         #session = client.session()
         #print('Username: {0}'.format(session['userCtx']['name']))
         #print('Databases: {0}'.format(client.all_dbs()))
         #db = client['nwaveoutput']
         #doc= db.create_document(op)
         #doc.save()
-        #c_score=confidence_score(weightage)
+        c_score=confidence_score(weightage)
         #print(doc)
-        #print(c_score)
+        print(c_score)
 	        #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
 	       
         response="OK"
@@ -69,10 +70,10 @@ def webhook():
 	   
 def intRegression(req):
 	    #Machine Learning Model
-	    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true",skip_header=1)
+	    dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/blob/master/Temp.xlsx?raw=true",skip_header=1)
 	    #dataset=pd.read_excel("D:\Python test\Temp.xlsx",skip_header=1)
-	    Y=dataset.iloc[:, 3:]
-	    X=dataset.iloc[:,1:3]
+	    Y=dataset.iloc[:, 2:]
+	    X=dataset.iloc[:,1:2]
 	    header=list(X)
 	    imputer = Imputer()
 	    dataset = imputer.fit_transform(X)
@@ -86,17 +87,17 @@ def intRegression(req):
 	    #print(contexts[0])
 	    #parameters=contexts[0].get("parameters")
 	    #for i in header:
-	     #   str=parameters.get(i)
-	      #  print("%s %s " %(i,str))
+	         str=req.get(i)
+			print("%s %s " %(i,str))
 	       # val.append(str)
 	    #ds=pd.DataFrame(val).T
 	    #print(ds)
 	
 	    #Prediction
-	    #op_lrt=lr.predict(ds)
-	    #op=round(op_lrt[0][0],2)
-	    #print(op)
-	    return " "
+	    op_lrt=lr.predict(ds)
+	    op=round(op_lrt[0][0],2)
+	    print(op)
+	    return op
 	
 def confidence_score(weightage):
 	    res = 0
