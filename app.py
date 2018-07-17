@@ -44,6 +44,7 @@ def webhook():
         op={'temp': temp,'hum': hum}
         print(op)
         dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/Temp.xlsx?raw=true",skip_header=1)
+        print(op)
         #session = client.session()
         #print('Username: {0}'.format(session['userCtx']['name']))
         #print('Databases: {0}'.format(client.all_dbs()))
