@@ -94,7 +94,7 @@ def intRegression(req):
 	    #op_lrt=lr.predict(ds)
 	    #op=round(op_lrt[0][0],2)
 	    #print(op)
-	    #return op
+	    return " "
 	
 def confidence_score(weightage):
 	    res = 0
