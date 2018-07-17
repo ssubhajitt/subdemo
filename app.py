@@ -64,16 +64,16 @@ def webhook():
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
     
-    #res= {"speech": response,"displayText": "LOAD-PAGE","source": "nWave-estimation-chatbot"}
-    #res = json.dumps(res, indent=4)
-    #print(res)
-    #r = make_response(res)
-    #r.headers['Content-Type'] = 'application/json'
+    res= {"speech": response,"displayText": "LOAD-PAGE","source": "nWave-estimation-chatbot"}
+    res = json.dumps(res, indent=4)
+    print(res)
+    r = make_response(res)
+    r.headers['Content-Type'] = 'application/json'
     return r
 	   
 def intRegression(req):
 	    #Machine Learning Model
-	    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true",skip_header=1)
+	    dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/blob/master/Temp.xlsx?raw=true",skip_header=1)
 	    #dataset=pd.read_excel("D:\Python test\Temp.xlsx",skip_header=1)
 	    Y=dataset.iloc[:, 3:]
 	    X=dataset.iloc[:,1:3]
