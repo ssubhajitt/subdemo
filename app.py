@@ -31,13 +31,14 @@ def webhook():
     try:
         req=request.get_json(silent=True,force=True)
         #sessionId=req.get("sessionId")
-        result=req.get("result")
-        contexts=result.get("contexts")
-        par=contexts[1].get("parameters")
+        #result=req.get("result")
+        #contexts=result.get("contexts")
+        #par=req.get("parameters")
+	#par=contexts[1].get("parameters")
         #product=par.get("product")
-        temp = par.get('temperature')
+        temp = req.get('temperature')
 		#print temp
-        hum = par.get('humidity')
+        hum = req.get('humidity')
 		#print hum
         weightage=intRegression(req)
         op={'sessionId':sessionId,
