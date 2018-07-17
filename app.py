@@ -33,7 +33,7 @@ def webhook():
         sessionId=req.get("sessionId")
         result=req.get("result")
         contexts=result.get("contexts")
-        par=contexts.get("parameters")
+        par=contexts[1].get("parameters")
         product=par.get("product")
         srcprotocol=par.get("srcprotocol")
         srcformat=par.get("srcmsgformat")
@@ -115,8 +115,8 @@ def intRegression(req):
 	    val=[]
 	    result=req.get("result")
 	    contexts=result.get("contexts")
-	    print(contexts)
-	    parameters=contexts.get("parameters")
+	    print(contexts[0])
+	    parameters=contexts[0].get("parameters")
 	    for i in header:
 	        str=parameters.get(i)
 	        print("%s %s " %(i,str))
