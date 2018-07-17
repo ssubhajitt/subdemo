@@ -75,8 +75,8 @@ def intRegression(req):
 	    #Machine Learning Model
 	    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true",skip_header=1)
 	    #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
-	    Y=dataset.iloc[:, 2:]
-	    X=dataset.iloc[:,1:2]
+	    Y=dataset.iloc[:, 3:]
+	    X=dataset.iloc[:,1:3]
 	    header=list(X)
 	    imputer = Imputer()
 	    dataset = imputer.fit_transform(X)
