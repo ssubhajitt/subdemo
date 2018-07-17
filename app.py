@@ -30,11 +30,11 @@ def webhook():
     output={}
     try:
         req=request.get_json(silent=True,force=True)
-        sessionId=req.get("sessionId")
+        #sessionId=req.get("sessionId")
         result=req.get("result")
         contexts=result.get("contexts")
         par=contexts[1].get("parameters")
-        product=par.get("product")
+        #product=par.get("product")
         temp = par.get('temperature')
 		#print temp
         hum = par.get('humidity')
@@ -64,11 +64,11 @@ def webhook():
     except:
         response="Sorry Bot has faced an issue! Please try after sometime!"
     
-    res= {"speech": response,"displayText": "LOAD-PAGE","source": "nWave-estimation-chatbot"}
-    res = json.dumps(res, indent=4)
-    print(res)
-    r = make_response(res)
-    r.headers['Content-Type'] = 'application/json'
+    #res= {"speech": response,"displayText": "LOAD-PAGE","source": "nWave-estimation-chatbot"}
+    #res = json.dumps(res, indent=4)
+    #print(res)
+    #r = make_response(res)
+    #r.headers['Content-Type'] = 'application/json'
     return r
 	   
 def intRegression(req):
