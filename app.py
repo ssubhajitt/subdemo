@@ -25,7 +25,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 @app.route('/webhook',methods=['POST'])
 def webhook():
-    url = 'https://subdemo.herokuapp.com/webhook'	    
+    url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"	    
     global output
     output={}
     try:
@@ -33,7 +33,7 @@ def webhook():
         sessionId=req.get("sessionId")
         result=req.get("result")
         contexts=result.get("contexts")
-        par=contexts[2].get("parameters")
+        par=contexts.get("parameters")
         product=par.get("product")
         srcprotocol=par.get("srcprotocol")
         srcformat=par.get("srcmsgformat")
@@ -115,8 +115,8 @@ def intRegression(req):
 	    val=[]
 	    result=req.get("result")
 	    contexts=result.get("contexts")
-	    print(contexts[0])
-	    parameters=contexts[0].get("parameters")
+	    print(contexts)
+	    parameters=contexts.get("parameters")
 	    for i in header:
 	        str=parameters.get(i)
 	        print("%s %s " %(i,str))
