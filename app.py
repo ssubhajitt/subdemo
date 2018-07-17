@@ -41,14 +41,7 @@ def webhook():
         hum = req.get('humidity')
 		#print hum
         weightage=intRegression(req)
-        op={'sessionId':sessionId,
-	            'weightage':weightage,
-	            'product':product,
-	            'temp': temp,
-				'hum': hum,
-	            'feedback':"Not Given",
-	            'admin-flag':0
-	           }
+        op={'temp': temp,'hum': hum}
         print(op)
         #session = client.session()
         #print('Username: {0}'.format(session['userCtx']['name']))
@@ -63,7 +56,7 @@ def webhook():
 	       
         response="Estimated Value for the interface is :<strong> %s PD. Confidence level : <strong> %s .</strong> </strong>PLEASE PROVIDE FEEDBACK IN THE 		EFFORT DETAILS PANE.<br><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage,c_score)
     except:
-        response="Sorry Bot has faced an issue! Please try after sometime!"
+        response="Critical"
     
     res= {"speech": response,"displayText": "LOAD-PAGE","source": "nWave-estimation-chatbot"}
     res = json.dumps(res, indent=4)
@@ -86,22 +79,22 @@ def intRegression(req):
 	
 	    #Data Processing
 	    val=[]
-	    result=req.get("result")
-	    contexts=result.get("contexts")
-	    print(contexts[0])
-	    parameters=contexts[0].get("parameters")
-	    for i in header:
-	        str=parameters.get(i)
-	        print("%s %s " %(i,str))
-	        val.append(str)
-	    ds=pd.DataFrame(val).T
-	    print(ds)
+	    #result=req.get("result")
+	    #contexts=result.get("contexts")
+	    #print(contexts[0])
+	    #parameters=contexts[0].get("parameters")
+	    #for i in header:
+	     #   str=parameters.get(i)
+	      #  print("%s %s " %(i,str))
+	       # val.append(str)
+	    #ds=pd.DataFrame(val).T
+	    #print(ds)
 	
 	    #Prediction
-	    op_lrt=lr.predict(ds)
-	    op=round(op_lrt[0][0],2)
-	    print(op)
-	    return op
+	    #op_lrt=lr.predict(ds)
+	    #op=round(op_lrt[0][0],2)
+	    #print(op)
+	    #return op
 	
 def confidence_score(weightage):
 	    res = 0
