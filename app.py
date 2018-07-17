@@ -36,9 +36,9 @@ def webhook():
         #par=req.get("parameters")
 	#par=contexts[1].get("parameters")
         #product=par.get("product")
-        temp = req.get('temperature')
+        temp = req.get('Temparature')
 		#print temp
-        hum = req.get('humidity')
+        hum = req.get('Humidity')
 		#print hum
         weightage=intRegression(req)
         print(weightage)
