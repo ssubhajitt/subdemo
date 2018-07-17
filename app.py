@@ -25,7 +25,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 @app.route('/webhook',methods=['POST'])
 def webhook():
-    url="https://nwave-ideabot-flask-webhook-p.herokuapp.com/storedata"	    
+    url="https://subdemo.herokuapp.com/webhook"	    
     global output
     output={}
     try:
@@ -73,7 +73,7 @@ def webhook():
 	   
 def intRegression(req):
 	    #Machine Learning Model
-	    dataset = pd.read_excel("https://github.com/s-gunalan/nWave-Flask-Demo/blob/master/dataset_integration_v2.xlsx?raw=true",skip_header=1)
+	    dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/Temp.xlsx?raw=true",skip_header=1)
 	    #dataset=pd.read_excel("D:/Guna/POCs/ML/nWave_effort/dataset_integration.xlsx",skip_header=1)
 	    Y=dataset.iloc[:, 3:]
 	    X=dataset.iloc[:,1:3]
