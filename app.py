@@ -16,11 +16,11 @@ from sklearn.decomposition import PCA
 from cloudant.error import CloudantException
 from cloudant.result import Result, ResultByKey,QueryResult
 	
-user= "9ef80d52-30b9-4e45-833a-75059db0825c-bluemix"
-password= "79d7c792bb13072da32aecc7dc3777e28780d6d11619795d54d717d2abbd62e5"
-host= "9ef80d52-30b9-4e45-833a-75059db0825c-bluemix.cloudant.com"
-url = 'https://' + host
-client = Cloudant(user, password, url=url, connect=True)    
+#user= "9ef80d52-30b9-4e45-833a-75059db0825c-bluemix"
+#password= "79d7c792bb13072da32aecc7dc3777e28780d6d11619795d54d717d2abbd62e5"
+#host= "9ef80d52-30b9-4e45-833a-75059db0825c-bluemix.cloudant.com"
+#url = 'https://' + host
+#client = Cloudant(user, password, url=url, connect=True)    
 app = Flask(__name__)
 app.config['SECRET_KEY']="QWERTYUIOPASDFGHJKLZXCVBNM"
 @app.route('/webhook',methods=['POST'])
@@ -49,14 +49,14 @@ def webhook():
 	            'admin-flag':0
 	           }
         print(op)
-        session = client.session()
-        print('Username: {0}'.format(session['userCtx']['name']))
-        print('Databases: {0}'.format(client.all_dbs()))
-        db = client['nwaveoutput']
-        doc= db.create_document(op)
-        doc.save()
+        #session = client.session()
+        #print('Username: {0}'.format(session['userCtx']['name']))
+        #print('Databases: {0}'.format(client.all_dbs()))
+        #db = client['nwaveoutput']
+        #doc= db.create_document(op)
+        #doc.save()
         c_score=confidence_score(weightage)
-        print(doc)
+        #print(doc)
         print(c_score)
 	        #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
 	       
