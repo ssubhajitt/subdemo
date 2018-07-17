@@ -86,12 +86,12 @@ def intRegression(req):
 	    #contexts=result.get("contexts")
 	    #print(contexts[0])
 	    #parameters=contexts[0].get("parameters")
-	    #for i in header:
-	         str=req.get(i)
-			print("%s %s " %(i,str))
-	       # val.append(str)
-	    #ds=pd.DataFrame(val).T
-	    #print(ds)
+	    for i in header:
+		        str=req.get(i)
+		        print("%s %s " %(i,str))
+		        val.append(str)
+		        ds=pd.DataFrame(val).T
+		        print(ds)
 	
 	    #Prediction
 	    op_lrt=lr.predict(ds)
