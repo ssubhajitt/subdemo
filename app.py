@@ -40,21 +40,22 @@ def webhook():
 		#print temp
         hum = req.get('humidity')
 		#print hum
-        weightage=intRegression(req)
+        #weightage=intRegression(req)
         op={'temp': temp,'hum': hum}
         print(op)
+	dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/Temp.xlsx?raw=true",skip_header=1)
         #session = client.session()
         #print('Username: {0}'.format(session['userCtx']['name']))
         #print('Databases: {0}'.format(client.all_dbs()))
         #db = client['nwaveoutput']
         #doc= db.create_document(op)
         #doc.save()
-        c_score=confidence_score(weightage)
+        #c_score=confidence_score(weightage)
         #print(doc)
-        print(c_score)
+        #print(c_score)
 	        #send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
 	       
-        response="Estimated Value for the interface is :<strong> %s PD. Confidence level : <strong> %s .</strong> </strong>PLEASE PROVIDE FEEDBACK IN THE 		EFFORT DETAILS PANE.<br><i>Do you need estimation for another interface ? (Yes/No) </i>" %(weightage,c_score)
+        response="OK"
     except:
         response="Critical"
     
