@@ -1,4 +1,4 @@
 applications:
- - name: nwave-flask-demo
+ - name: subdemo
    random-route: true
    memory: 128M
