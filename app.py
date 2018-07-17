@@ -58,7 +58,7 @@ def webhook():
     except:
         response="Critical"
     
-    res= {"speech": response,"displayText": "LOAD-PAGE","source": "nWave-estimation-chatbot"}
+    res= {"output": response}
     res = json.dumps(res, indent=4)
     print(res)
     r = make_response(res)
