@@ -110,7 +110,7 @@ def confidence_score(weightage):
 	        res= 80 - random.randint(0,5)*1.17 + random.randint(0,5)*0.74
 	    return res
 	
-port = os.getenv('VCAP_APP_PORT', '5000')
+#port = os.getenv('VCAP_APP_PORT', '5000')
 if __name__ == "__main__":
-       app.run(host='0.0.0.0', port=int(port), use_reloader=True, debug=True)
+       app.run(use_reloader=True, debug=True)
 
