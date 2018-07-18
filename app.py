@@ -39,7 +39,7 @@ def webhook():
         temp = req.get('Temparature')
 		#print temp
         hum = req.get('Humidity')
-	print hum
+        print hum
         weightage=intRegression(req)
         print(weightage)
         op={'temp': temp,'hum': hum}
