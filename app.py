@@ -30,7 +30,7 @@ def webhook():
     output={}
     try:
         req=request.get_json(silent=True,force=True)
-	print(req)
+	        print(req)
         #sessionId=req.get("sessionId")
         #result=req.get("result")
         #contexts=result.get("contexts")
