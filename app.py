@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import json
 import os
 import requests
@@ -37,7 +38,7 @@ def webhook():
     output = {}
     try:
         req = request.get_json(silent=True, force=True)
-        print (req)
+        print req
 
         # sessionId=req.get("sessionId")
         # result=req.get("result")
@@ -47,13 +48,13 @@ def webhook():
         # product=par.get("product")
 
         temp = req.get('Temparature')
-        print (temp)
+        print temp
         hum = req.get('Humidity')
-        print (hum)
+        print hum
         weightage = intRegression(req)
-        print (weightage)
+        print weightage
         op = {'temp': temp, 'hum': hum}
-        print (op)
+        print op
 
         # dataset = pd.read_excel("https://github.com/ssubhajitt/subdemo/blob/master/Temp.xlsx?raw=true",skip_header=1)
         # print(op)
@@ -68,21 +69,22 @@ def webhook():
 
         # print(doc)
 
-        print (c_score)
+        print c_score
 
             # send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
 
-        #response = 'OK'
-	if (weightage>0.35 and c_score<80):
-	response = 'OK'
-	else:
-	response = 'Critical'
+        # response = 'OK'
+
+        if weightage > 0.35 and c_score < 80:
+            response = 'OK'
+        else:
+            response = 'Critical'
     except:
         response = 'Critical'
 
     res = response
     res = json.dumps(res, indent=4)
-    print (res)
+    print res
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
@@ -117,16 +119,16 @@ def intRegression(req):
 
     for i in header:
         str = req.get(i)
-        print ('%s %s ' % (i, str))
+        print '%s %s ' % (i, str)
         val.append(str)
         ds = pd.DataFrame(val).T
-        print (ds)
+        print ds
 
         # Prediction
 
     op_lrt = lr.predict(ds)
     op = round(op_lrt[0][0], 2)
-    print (op)
+    print op
     return op
 
 
@@ -147,7 +149,4 @@ if __name__ == '__main__':
     app.run(use_reloader=True, debug=True)
 
 
-			
-
-			
 			
