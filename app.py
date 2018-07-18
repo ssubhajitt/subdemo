@@ -73,7 +73,7 @@ def webhook():
             # send_data=requests.post(url,data={'key':weightage,'sessionId':sessionId})
 
         #response = 'OK'
-	if weightage<0.5:
+	if (weightage>0.35 and c_score<80):
 	response = 'OK'
 	else:
 	response = 'Critical'
