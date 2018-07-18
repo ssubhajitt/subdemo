@@ -75,7 +75,7 @@ def webhook():
 
         # response = 'OK'
 
-        if weightage > 0.35 and c_score < 80:
+        if (weightage > 0.35 and c_score < 80):
             response = 'OK'
         else:
             response = 'Critical'
