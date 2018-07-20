@@ -75,7 +75,7 @@ def webhook():
 
         # response = 'OK'
 
-        if weightage > 0.5:
+        if weightage > 0.39:
             response = 'OK'
             print (weightage)
             print (c_score)
@@ -151,6 +151,3 @@ def confidence_score(weightage):
 
 if __name__ == '__main__':
     app.run(use_reloader=True, debug=True)
-
-
-			
