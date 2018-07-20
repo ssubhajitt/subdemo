@@ -75,7 +75,7 @@ def webhook():
 
         # response = 'OK'
 
-        if weightage > 0.39:
+        if weightage > 0.55:
             response = 'OK'
             print (weightage)
             print (c_score)
