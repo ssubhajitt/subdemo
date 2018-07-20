@@ -76,11 +76,11 @@ def webhook():
         # response = 'OK'
 
         if weightage > 0.5:
-            response = 'Critical'
+            response = 'OK'
             print (weightage)
             print (c_score)
         else:
-            response = 'OK'
+            response = 'Critical'
             print (weightage)
             print (c_score)
     except:
